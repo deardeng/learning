@@ -1,0 +1,369 @@
+	./01list.vim	/^cnoremap  <Home>$/;"	m
+	./01list.vim	/^inoremap  $/;"	m
+	./01list.vim	/^cnoremap  <End>$/;"	m
+	./01list.vim	/^inoremap  $/;"	m
+	./01list.vim	/^nmap  h$/;"	m
+		./01list.vim	/^imap 	 $/;"	m
+	./01list.vim	/^cnoremap  $/;"	m
+	./01list.vim	/^inoremap <expr>  pumvisible()?"\\<PageUp>\\\\":"\\"$/;"	m
+	./01list.vim	/^nmap  k$/;"	m
+	./01list.vim	/^inoremap  $/;"	m
+	./01list.vim	/^nmap  l$/;"	m
+	./01list.vim	/^inoremap <expr> $/;"	m
+	./01list.vim	/^inoremap <expr>  pumvisible()?"\\":"\\"$/;"	m
+	./01list.vim	/^nmap  :BottomExplorerWindow$/;"	m
+	./01list.vim	/^nmap  :FirstExplorerWindow$/;"	m
+	./01list.vim	/^imap  =CtrlXPP()$/;"	m
+	./01list.vim	/^inoremap <expr>  omni#cpp#maycomplete#Complete()$/;"	m
+-	./01list.vim	/^nnoremap <buffer> <silent> - :CCTreeRecurseDepthMinus$/;"	m
+=	./01list.vim	/^nnoremap <buffer> <silent> = :CCTreeRecurseDepthPlus$/;"	m
+w	./01list.vim	/^nnoremap <silent> w :CCTreeWindowToggle$/;"	m
+y	./01list.vim	/^nnoremap <silent> y :CCTreeWindowSaveCopy$/;"	m
+	./01list.vim	/^inoremap  $/;"	m
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+#	./01list.vim	/^vnoremap <silent> # :call VisualSearch('b')$/;"	m
+*	./01list.vim	/^vnoremap <silent> * :call VisualSearch('f')$/;"	m
+,	./01list.vim	/^map <buffer> ,  :make$/;"	m
+,	./01list.vim	/^nmap <silent> ,$/;"	m
+,$	./01list.vim	/^map ,$ :syntax sync fromstart$/;"	m
+,1	./01list.vim	/^map ,1 :set syntax=c$/;"	m
+,2	./01list.vim	/^map ,2 :set syntax=xhtml$/;"	m
+,3	./01list.vim	/^map ,3 :set syntax=python$/;"	m
+,4	./01list.vim	/^map ,4 :set ft=javascript$/;"	m
+,bb	./01list.vim	/^nmap <silent> ,bb :TagbarToggle$/;"	m
+,bd	./01list.vim	/^map ,bd :Bclose$/;"	m
+,cd	./01list.vim	/^map <silent> ,cd :cd %:p:h$/;"	m
+,cn	./01list.vim	/^nmap ,cn :cn$/;"	m
+,cp	./01list.vim	/^nmap ,cp :cp$/;"	m
+,cw	./01list.vim	/^nmap ,cw :cw 10$/;"	m
+,dm	./01list.vim	/^noremap ,dm mzHmx:%s\/$/;"	m
+,ec	./01list.vim	/^map ,ec :tabnew ~\/tmp\/scratch.txt$/;"	m
+,ee	./01list.vim	/^map <silent> ,ee :call SwitchToBuf("~\/.vimrc")$/;"	m
+,es	./01list.vim	/^map ,es :tabnew$/;"	m
+,fd	./01list.vim	/^nmap ,fd :se ff=dos$/;"	m
+,fu	./01list.vim	/^nmap ,fu :se ff=unix$/;"	m
+,hh	./01list.vim	/^nmap <silent> ,hh <Plug>MarkClear$/;"	m
+,hh	./01list.vim	/^vmap <silent> ,hh <Plug>MarkClear$/;"	m
+,hl	./01list.vim	/^nmap <silent> ,hl <Plug>MarkSet$/;"	m
+,hl	./01list.vim	/^vmap <silent> ,hl <Plug>MarkSet$/;"	m
+,hr	./01list.vim	/^nmap <silent> ,hr <Plug>MarkRegex$/;"	m
+,hr	./01list.vim	/^vmap <silent> ,hr <Plug>MarkRegex$/;"	m
+,ih	./01list.vim	/^imap ,ih :IHS$/;"	m
+,ih	./01list.vim	/^nmap ,ih :IHS$/;"	m
+,ihn	./01list.vim	/^imap ,ihn :IHN$/;"	m
+,ihn	./01list.vim	/^nmap ,ihn :IHN$/;"	m
+,is	./01list.vim	/^imap ,is :IHS$/;"	m
+,is	./01list.vim	/^nmap ,is :IHS$/;"	m
+,lk	./01list.vim	/^nmap <silent> ,lk :LUTags$/;"	m
+,ll	./01list.vim	/^nmap <silent> ,ll :LUBufs$/;"	m
+,lv	./01list.vim	/^nmap <silent> ,lv :lv \/=expand("<cword>")$/;"	m
+,lw	./01list.vim	/^nmap <silent> ,lw :LUWalk$/;"	m
+,ma	./01list.vim	/^map <silent> ,ma :ShowMarksClearAll$/;"	m
+,mbc	./01list.vim	/^map ,mbc <Plug>CMiniBufExplorer$/;"	m
+,mbe	./01list.vim	/^map ,mbe <Plug>MiniBufExplorer$/;"	m
+,mbt	./01list.vim	/^map ,mbt <Plug>TMiniBufExplorer$/;"	m
+,mbu	./01list.vim	/^map ,mbu <Plug>UMiniBufExplorer$/;"	m
+,mh	./01list.vim	/^map <silent> ,mh :ShowMarksClearMark$/;"	m
+,mk	./01list.vim	/^nmap <silent> ,mk :MarksBrowser$/;"	m
+,mm	./01list.vim	/^map <silent> ,mm :ShowMarksPlaceMark$/;"	m
+,mo	./01list.vim	/^map <silent> ,mo :ShowMarksOn$/;"	m
+,mt	./01list.vim	/^map <silent> ,mt :ShowMarksToggle$/;"	m
+,of	./01list.vim	/^nmap <silent> ,of :FSHere$/;"	m
+,qa	./01list.vim	/^nmap <silent> ,qa :qa$/;"	m
+,qf	./01list.vim	/^nmap <silent> ,qf :q!$/;"	m
+,qq	./01list.vim	/^nmap <silent> ,qq :q$/;"	m
+,qw	./01list.vim	/^nmap <silent> ,qw :wq$/;"	m
+,rr	./01list.vim	/^nmap <silent> ,rr :redraw!$/;"	m
+,s?	./01list.vim	/^map ,s? z=$/;"	m
+,sa	./01list.vim	/^map ,sa zg$/;"	m
+,sn	./01list.vim	/^map ,sn ]s$/;"	m
+,sp	./01list.vim	/^map ,sp [s$/;"	m
+,ss	./01list.vim	/^map <silent> ,ss :source ~\/.vimrc$/;"	m
+,t2	./01list.vim	/^map ,t2 :set shiftwidth=2$/;"	m
+,t4	./01list.vim	/^map ,t4 :set shiftwidth=4$/;"	m
+,tc	./01list.vim	/^map ,tc :tabclose$/;"	m
+,te	./01list.vim	/^map ,te :tabedit$/;"	m
+,tl	./01list.vim	/^nmap <silent> ,tl :Tlist$/;"	m
+,tm	./01list.vim	/^map ,tm :tabmove$/;"	m
+,tn	./01list.vim	/^map ,tn :tabnew$/;"	m
+,tt	./01list.vim	/^nmap <silent> ,tt :NERDTreeToggle$/;"	m
+,wf	./01list.vim	/^nmap <silent> ,wf :w!$/;"	m
+,wm	./01list.vim	/^nmap <silent> ,wm :WMToggle$/;"	m
+,ws	./01list.vim	/^nmap <silent> ,ws :call DeleteTrailingWS()$/;"	m
+,ww	./01list.vim	/^nmap <silent> ,ww :w$/;"	m
+,yr	./01list.vim	/^map ,yr :YRShow$/;"	m
+,zo	./01list.vim	/^nmap <silent> ,zo zO$/;"	m
+,zo	./01list.vim	/^vmap <silent> ,zo zO$/;"	m
+.	./01list.vim	/^inoremap <expr> . omni#cpp#maycomplete#Dot()$/;"	m
+0	./01list.vim	/^normal! 0$/;"	m
+:	./01list.vim	/^inoremap <expr> : omni#cpp#maycomplete#Scope()$/;"	m
+<F1>	./01list.vim	/^cmap <F1> $/;"	m
+<F1>	./01list.vim	/^imap <F1> $/;"	m
+<F1>	./01list.vim	/^nmap <F1> $/;"	m
+<F1>	./01list.vim	/^vmap <F1> $/;"	m
+<F5>	./01list.vim	/^imap <silent> <expr> <F5> (pumvisible() ? "\\<Plug>LookupFileCE" : "")."\\\\<Plug>LookupFile"$/;"	m
+<F5>	./01list.vim	/^nmap <silent> <F5> <Plug>LookupFile$/;"	m
+<NL>	./01list.vim	/^inoremap <expr> <NL> pumvisible()?"\\<PageDown>\\\\":"\\"$/;"	m
+<NL>	./01list.vim	/^nmap <NL> j$/;"	m
+<Nul>c	./01list.vim	/^nmap <Nul>c :cs find c =expand("<cword>")$/;"	m
+<Nul>d	./01list.vim	/^nmap <Nul>d :cs find d =expand("<cword>")$/;"	m
+<Nul>e	./01list.vim	/^nmap <Nul>e :cs find e =expand("<cword>")$/;"	m
+<Nul>f	./01list.vim	/^nmap <Nul>f :cs find f =expand("<cfile>")$/;"	m
+<Nul>g	./01list.vim	/^nmap <Nul>g :cs find g =expand("<cword>")$/;"	m
+<Nul>i	./01list.vim	/^nmap <Nul>i :cs find i ^=expand("<cfile>")$/;"	m
+<Nul>s	./01list.vim	/^nmap <Nul>s :cs find s =expand("<cword>")$/;"	m
+<Nul>t	./01list.vim	/^nmap <Nul>t :cs find t =expand("<cword>")$/;"	m
+<Plug>LookupFileCE	./01list.vim	/^inoremap <Plug>LookupFileCE $/;"	m
+<Plug>NetrwBrowseX	./01list.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)$/;"	m
+<S-Tab>	./01list.vim	/^inoremap <S-Tab> $/;"	m
+>	./01list.vim	/^inoremap <expr> > omni#cpp#maycomplete#Arrow()$/;"	m
+L	./06bst.cpp	/^		Node* L;$/;"	m	struct:bst::Node	file:	access:public
+LIST_H	./01list.h	2;"	d
+List	./01list.h	/^	List():head(NULL),len(0){}$/;"	f	class:List	access:public	signature:()
+List	./01list.h	/^class List{$/;"	c
+List::List	./01list.h	/^	List():head(NULL),len(0){}$/;"	f	class:List	access:public	signature:()
+List::Node	./01list.h	/^	struct Node{$/;"	s	class:List	access:private
+List::Node::Node	./01list.h	/^		Node(const T& d=T()):data(d),next(0){}\/\/零初始化$/;"	f	struct:List::Node	access:public	signature:(const T& d=T())
+List::Node::data	./01list.h	/^		T data;$/;"	m	struct:List::Node	access:public
+List::Node::next	./01list.h	/^		Node* next;$/;"	m	struct:List::Node	access:public
+List::back	./01list.cpp	/^const T& List::back()const{$/;"	f	class:List	signature:() const
+List::back	./01list.h	/^	const T& back()const;$/;"	p	class:List	access:public	signature:() const
+List::clear	./01list.cpp	/^void List::clear(){\/\/清空这个链表$/;"	f	class:List	signature:()
+List::clear	./01list.h	/^	void clear();\/\/清空这个链表$/;"	p	class:List	access:public	signature:()
+List::empty	./01list.h	/^	bool empty()const{return head == 0;}$/;"	f	class:List	access:public	signature:() const
+List::erase	./01list.cpp	/^void List::erase(int pos){\/\/有效位置为0~size()-1$/;"	f	class:List	signature:(int pos)
+List::erase	./01list.h	/^	void erase(int pos);\/\/有效位置为0~size()-1$/;"	p	class:List	access:public	signature:(int pos)
+List::find	./01list.cpp	/^int List::find(const T& d)const{$/;"	f	class:List	signature:(const T& d) const
+List::find	./01list.h	/^	int find(const T& d)const;$/;"	p	class:List	access:public	signature:(const T& d) const
+List::front	./01list.h	/^	const T& front()const{if(empty())throw"空";return head->data;}$/;"	f	class:List	access:public	signature:() const
+List::getptr	./01list.cpp	/^List::Node*& List::getptr(int pos){\/\/找链表中指向指定位置的指针$/;"	f	class:List	signature:(int pos)
+List::getptr	./01list.h	/^	Node*& getptr(int pos);\/\/找链表中指向指定位置的指针$/;"	p	class:List	access:public	signature:(int pos)
+List::head	./01list.h	/^	Node* head;\/\/头指针，用来保存头节点的地址$/;"	m	class:List	access:private
+List::insert	./01list.cpp	/^void List::insert(const T& d,int pos){\/\/在任意位置插入$/;"	f	class:List	signature:(const T& d,int pos)
+List::insert	./01list.h	/^	void insert(const T& d,int pos);\/\/在任意位置插入$/;"	p	class:List	access:public	signature:(const T& d,int pos)
+List::len	./01list.h	/^	int len;$/;"	m	class:List	access:private
+List::push_back	./01list.cpp	/^List& List::push_back(const T& d){\/\/尾插$/;"	f	class:List	signature:(const T& d)
+List::push_back	./01list.h	/^	List& push_back(const T& d);\/\/尾插$/;"	p	class:List	access:public	signature:(const T& d)
+List::push_front	./01list.cpp	/^void List::push_front(const T&d){$/;"	f	class:List	signature:(const T&d)
+List::push_front	./01list.h	/^	void push_front(const T& d);\/\/前插$/;"	p	class:List	access:public	signature:(const T& d)
+List::remove	./01list.cpp	/^void List::remove(const T& d){$/;"	f	class:List	signature:(const T& d)
+List::remove	./01list.h	/^	void remove(const T& d);$/;"	p	class:List	access:public	signature:(const T& d)
+List::set	./01list.cpp	/^void List::set(int pos,const T& d){$/;"	f	class:List	signature:(int pos,const T& d)
+List::set	./01list.h	/^	void set(int pos,const T& d);$/;"	p	class:List	access:public	signature:(int pos,const T& d)
+List::size	./01list.cpp	/^int List::size()const{$/;"	f	class:List	signature:() const
+List::size	./01list.h	/^	int size()const;$/;"	p	class:List	access:public	signature:() const
+List::travel	./01list.cpp	/^void List::travel()const{\/\/遍历$/;"	f	class:List	signature:() const
+List::travel	./01list.h	/^	void travel()const;\/\/遍历$/;"	p	class:List	access:public	signature:() const
+List::~List	./01list.cpp	/^List::~List(){$/;"	f	class:List	signature:()
+List::~List	./01list.h	/^	~List();$/;"	p	class:List	access:public	signature:()
+Node	./01list.h	/^		Node(const T& d=T()):data(d),next(0){}\/\/零初始化$/;"	f	struct:List::Node	access:public	signature:(const T& d=T())
+Node	./01list.h	/^	struct Node{$/;"	s	class:List	access:private
+Node	./06bst.cpp	/^		Node(const T& d):data(d),L(),R(){}$/;"	f	struct:bst::Node	access:public	signature:(const T& d)
+Node	./06bst.cpp	/^		Node(const T& d,Node* l,Node* r):data(d),L(l),R(r){}$/;"	f	struct:bst::Node	access:public	signature:(const T& d,Node* l,Node* r)
+Node	./06bst.cpp	/^	struct Node{$/;"	s	class:bst	file:	access:private
+Queue	./04queue.cpp	/^class Queue{$/;"	c	file:
+Queue	./05queue.cpp	/^	Queue():b(0),n(0){}$/;"	f	class:Queue	access:public	signature:()
+Queue	./05queue.cpp	/^class Queue{$/;"	c	file:
+Queue::Queue	./05queue.cpp	/^	Queue():b(0),n(0){}$/;"	f	class:Queue	access:public	signature:()
+Queue::a	./05queue.cpp	/^	T a[5];$/;"	m	class:Queue	file:	access:private
+Queue::b	./05queue.cpp	/^	int b,n;\/\/队首位置和有效元素个数$/;"	m	class:Queue	file:	access:private
+Queue::back	./04queue.cpp	/^	const T& back()const {return l.back();}$/;"	f	class:Queue	access:public	signature:() const
+Queue::back	./05queue.cpp	/^		const T& back()const {return a[(b+n-1)%5];}$/;"	f	class:Queue	access:public	signature:() const
+Queue::clear	./04queue.cpp	/^	void clear(){l.clear();}$/;"	f	class:Queue	access:public	signature:()
+Queue::clear	./05queue.cpp	/^		void clear(){b=0,n=0;}$/;"	f	class:Queue	access:public	signature:()
+Queue::empty	./04queue.cpp	/^	bool empty()const{return l.empty();}$/;"	f	class:Queue	access:public	signature:() const
+Queue::empty	./05queue.cpp	/^		bool empty()const{return n==0;}$/;"	f	class:Queue	access:public	signature:() const
+Queue::front	./04queue.cpp	/^	const T& front()const {return l.front();}$/;"	f	class:Queue	access:public	signature:() const
+Queue::front	./05queue.cpp	/^		const T& front()const {return a[b%5];}$/;"	f	class:Queue	access:public	signature:() const
+Queue::full	./04queue.cpp	/^	bool full()const{return false;}$/;"	f	class:Queue	access:public	signature:() const
+Queue::full	./05queue.cpp	/^		bool full()const{return n==5;}$/;"	f	class:Queue	access:public	signature:() const
+Queue::l	./04queue.cpp	/^	List l;$/;"	m	class:Queue	file:	access:private
+Queue::n	./05queue.cpp	/^	int b,n;\/\/队首位置和有效元素个数$/;"	m	class:Queue	file:	access:private
+Queue::pop	./04queue.cpp	/^	T pop(){T t=front();l.erase(0);return t;}$/;"	f	class:Queue	access:public	signature:()
+Queue::pop	./05queue.cpp	/^	T pop(){$/;"	f	class:Queue	access:public	signature:()
+Queue::push	./04queue.cpp	/^	Queue& push(const T& d){l.push_back(d);return *this;}$/;"	f	class:Queue	access:public	signature:(const T& d)
+Queue::push	./05queue.cpp	/^	Queue& push(const T&d){$/;"	f	class:Queue	access:public	signature:(const T&d)
+Queue::size	./04queue.cpp	/^	int size()const{return l.size();}$/;"	f	class:Queue	access:public	signature:() const
+Queue::size	./05queue.cpp	/^		int size()const{return n;}$/;"	f	class:Queue	access:public	signature:() const
+R	./06bst.cpp	/^		Node* R;$/;"	m	struct:bst::Node	file:	access:public
+SessionLoad	./01list.vim	/^let SessionLoad = 1$/;"	v
+Stack	./02stack.cpp	/^	Stack():cur(0){}$/;"	f	class:Stack	access:public	signature:()
+Stack	./02stack.cpp	/^class Stack{$/;"	c	file:
+Stack	./03stack.cpp	/^class Stack{$/;"	c	file:
+Stack::Stack	./02stack.cpp	/^	Stack():cur(0){}$/;"	f	class:Stack	access:public	signature:()
+Stack::a	./02stack.cpp	/^	T a[5];$/;"	m	class:Stack	file:	access:private
+Stack::clear	./02stack.cpp	/^	void clear(){cur=0;}\/\/栈清空（复位）$/;"	f	class:Stack	access:public	signature:()
+Stack::clear	./03stack.cpp	/^	void clear(){l.clear();}\/\/栈清空（复位）$/;"	f	class:Stack	access:public	signature:()
+Stack::cur	./02stack.cpp	/^	int cur;$/;"	m	class:Stack	file:	access:private
+Stack::empty	./02stack.cpp	/^	bool empty()const{return cur==0;}\/\/是否空$/;"	f	class:Stack	access:public	signature:() const
+Stack::empty	./03stack.cpp	/^	bool empty()const{return l.empty();}\/\/是否空$/;"	f	class:Stack	access:public	signature:() const
+Stack::full	./02stack.cpp	/^	bool full()const{return cur==5;}\/\/是否已满$/;"	f	class:Stack	access:public	signature:() const
+Stack::full	./03stack.cpp	/^	bool full()const{return false;}\/\/是否已满$/;"	f	class:Stack	access:public	signature:() const
+Stack::l	./03stack.cpp	/^	List l;\/\/组合$/;"	m	class:Stack	file:	access:private
+Stack::pop	./02stack.cpp	/^	T pop()throw(const char*);\/\/stack顶数据出stack$/;"	p	class:Stack	file:	access:public	signature:()
+Stack::pop	./02stack.cpp	/^T Stack::pop()throw(const char*){$/;"	f	class:Stack	signature:()
+Stack::pop	./03stack.cpp	/^	T pop();\/\/stack顶数据出stack$/;"	p	class:Stack	file:	access:public	signature:()
+Stack::pop	./03stack.cpp	/^T Stack::pop(){$/;"	f	class:Stack	signature:()
+Stack::push	./02stack.cpp	/^	void push(const T& d)throw(const char*);\/\/数据入stack成为stack顶$/;"	p	class:Stack	file:	access:public	signature:(const T& d)
+Stack::push	./02stack.cpp	/^void Stack::push(const T&d)throw(const char*){$/;"	f	class:Stack	signature:(const T&d)
+Stack::push	./03stack.cpp	/^	void push(const T& d);\/\/数据入stack成为stack顶$/;"	p	class:Stack	file:	access:public	signature:(const T& d)
+Stack::push	./03stack.cpp	/^void Stack::push(const T&d){$/;"	f	class:Stack	signature:(const T&d)
+Stack::size	./02stack.cpp	/^	int size()const{return cur;}\/\/栈中数据个数$/;"	f	class:Stack	access:public	signature:() const
+Stack::size	./03stack.cpp	/^	int size()const{return l.size();}\/\/栈中数据个数$/;"	f	class:Stack	access:public	signature:() const
+Stack::top	./02stack.cpp	/^	const T& top()const throw(const char*);\/\/取得stack顶数据$/;"	p	class:Stack	file:	access:public	signature:() const
+Stack::top	./02stack.cpp	/^const T& Stack::top()const throw(const char*){$/;"	f	class:Stack	signature:() const
+Stack::top	./03stack.cpp	/^	const T& top()const;\/\/取得stack顶数据$/;"	p	class:Stack	file:	access:public	signature:() const
+Stack::top	./03stack.cpp	/^const T& Stack::top()const {$/;"	f	class:Stack	signature:() const
+T	./01list.cpp	/^typedef int T;$/;"	t	file:
+T	./01main.cpp	/^typedef int T;$/;"	t	file:
+T	./02stack.cpp	/^typedef string T;$/;"	t	file:
+T	./03stack.cpp	/^typedef int T;$/;"	t	file:
+T	./04queue.cpp	/^typedef int T;$/;"	t	file:
+T	./05queue.cpp	/^typedef int T;$/;"	t	file:
+T	./06bst.cpp	/^typedef char T;$/;"	t	file:
+[%	./01list.vim	/^vmap [% [%m'gv``$/;"	m
+]%	./01list.vim	/^vmap ]% ]%m'gv``$/;"	m
+a	./02stack.cpp	/^	T a[5];$/;"	m	class:Stack	file:	access:private
+a	./05queue.cpp	/^	T a[5];$/;"	m	class:Queue	file:	access:private
+a%	./01list.vim	/^vmap a% [%v]%$/;"	m
+b	./05queue.cpp	/^	int b,n;\/\/队首位置和有效元素个数$/;"	m	class:Queue	file:	access:private
+back	./01list.cpp	/^const T& List::back()const{$/;"	f	class:List	signature:() const
+back	./01list.h	/^	const T& back()const;$/;"	p	class:List	access:public	signature:() const
+back	./04queue.cpp	/^	const T& back()const {return l.back();}$/;"	f	class:Queue	access:public	signature:() const
+back	./05queue.cpp	/^		const T& back()const {return a[(b+n-1)%5];}$/;"	f	class:Queue	access:public	signature:() const
+bst	./06bst.cpp	/^	bst():rp(),n(){}$/;"	f	class:bst	access:public	signature:()
+bst	./06bst.cpp	/^class bst{$/;"	c	file:
+bst::Node	./06bst.cpp	/^	struct Node{$/;"	s	class:bst	file:	access:private
+bst::Node::L	./06bst.cpp	/^		Node* L;$/;"	m	struct:bst::Node	file:	access:public
+bst::Node::Node	./06bst.cpp	/^		Node(const T& d):data(d),L(),R(){}$/;"	f	struct:bst::Node	access:public	signature:(const T& d)
+bst::Node::Node	./06bst.cpp	/^		Node(const T& d,Node* l,Node* r):data(d),L(l),R(r){}$/;"	f	struct:bst::Node	access:public	signature:(const T& d,Node* l,Node* r)
+bst::Node::R	./06bst.cpp	/^		Node* R;$/;"	m	struct:bst::Node	file:	access:public
+bst::Node::data	./06bst.cpp	/^		T data;$/;"	m	struct:bst::Node	file:	access:public
+bst::bst	./06bst.cpp	/^	bst():rp(),n(){}$/;"	f	class:bst	access:public	signature:()
+bst::clear	./06bst.cpp	/^	void clear(){clear(rp);n=0;}$/;"	f	class:bst	access:public	signature:()
+bst::clear	./06bst.cpp	/^	void clear(tree& t){$/;"	f	class:bst	access:public	signature:(tree& t)
+bst::empty	./06bst.cpp	/^	bool empty()const{return rp==NULL;}$/;"	f	class:bst	access:public	signature:() const
+bst::find	./06bst.cpp	/^	tree& find(const T& d){return find(rp,d);}$/;"	f	class:bst	access:public	signature:(const T& d)
+bst::find	./06bst.cpp	/^	tree& find(tree& t,const T& d){\/\/返回以d为根结点的子树的根指针$/;"	f	class:bst	access:public	signature:(tree& t,const T& d)
+bst::high	./06bst.cpp	/^	int high(tree t){$/;"	f	class:bst	access:public	signature:(tree t)
+bst::insert	./06bst.cpp	/^	void insert(const T& d){insert(rp,new Node(d));++n;}$/;"	f	class:bst	access:public	signature:(const T& d)
+bst::insert	./06bst.cpp	/^	void insert(tree& t, Node* p){$/;"	f	class:bst	access:public	signature:(tree& t, Node* p)
+bst::n	./06bst.cpp	/^	int n;$/;"	m	class:bst	file:	access:private
+bst::remove	./06bst.cpp	/^	bool remove(const T& d){$/;"	f	class:bst	access:public	signature:(const T& d)
+bst::root	./06bst.cpp	/^	const T& root()const{if(!rp)throw "空";return rp->data;}$/;"	f	class:bst	access:public	signature:() const
+bst::rp	./06bst.cpp	/^	Node* rp;$/;"	m	class:bst	file:	access:private
+bst::rt	./06bst.cpp	/^	const tree& rt()const{$/;"	f	class:bst	access:public	signature:() const
+bst::size	./06bst.cpp	/^	int size()const{return n;}$/;"	f	class:bst	access:public	signature:() const
+bst::travel	./06bst.cpp	/^	void travel()const{travel(rp);cout<<endl;}$/;"	f	class:bst	access:public	signature:() const
+bst::travel	./06bst.cpp	/^	void travel(tree t)const{$/;"	f	class:bst	access:public	signature:(tree t) const
+bst::tree	./06bst.cpp	/^	typedef Node* tree;$/;"	t	class:bst	file:	access:private
+bst::update	./06bst.cpp	/^	void update(const T& olddate,const T& newdata){$/;"	f	class:bst	access:public	signature:(const T& olddate,const T& newdata)
+bst::~bst	./06bst.cpp	/^	~bst(){clear();}$/;"	f	class:bst	access:public	signature:()
+clear	./01list.cpp	/^void List::clear(){\/\/清空这个链表$/;"	f	class:List	signature:()
+clear	./01list.h	/^	void clear();\/\/清空这个链表$/;"	p	class:List	access:public	signature:()
+clear	./02stack.cpp	/^	void clear(){cur=0;}\/\/栈清空（复位）$/;"	f	class:Stack	access:public	signature:()
+clear	./03stack.cpp	/^	void clear(){l.clear();}\/\/栈清空（复位）$/;"	f	class:Stack	access:public	signature:()
+clear	./04queue.cpp	/^	void clear(){l.clear();}$/;"	f	class:Queue	access:public	signature:()
+clear	./05queue.cpp	/^		void clear(){b=0,n=0;}$/;"	f	class:Queue	access:public	signature:()
+clear	./06bst.cpp	/^	void clear(){clear(rp);n=0;}$/;"	f	class:bst	access:public	signature:()
+clear	./06bst.cpp	/^	void clear(tree& t){$/;"	f	class:bst	access:public	signature:(tree& t)
+cur	./02stack.cpp	/^	int cur;$/;"	m	class:Stack	file:	access:private
+data	./01list.h	/^		T data;$/;"	m	struct:List::Node	access:public
+data	./06bst.cpp	/^		T data;$/;"	m	struct:bst::Node	file:	access:public
+empty	./01list.h	/^	bool empty()const{return head == 0;}$/;"	f	class:List	access:public	signature:() const
+empty	./02stack.cpp	/^	bool empty()const{return cur==0;}\/\/是否空$/;"	f	class:Stack	access:public	signature:() const
+empty	./03stack.cpp	/^	bool empty()const{return l.empty();}\/\/是否空$/;"	f	class:Stack	access:public	signature:() const
+empty	./04queue.cpp	/^	bool empty()const{return l.empty();}$/;"	f	class:Queue	access:public	signature:() const
+empty	./05queue.cpp	/^		bool empty()const{return n==0;}$/;"	f	class:Queue	access:public	signature:() const
+empty	./06bst.cpp	/^	bool empty()const{return rp==NULL;}$/;"	f	class:bst	access:public	signature:() const
+erase	./01list.cpp	/^void List::erase(int pos){\/\/有效位置为0~size()-1$/;"	f	class:List	signature:(int pos)
+erase	./01list.h	/^	void erase(int pos);\/\/有效位置为0~size()-1$/;"	p	class:List	access:public	signature:(int pos)
+find	./01list.cpp	/^int List::find(const T& d)const{$/;"	f	class:List	signature:(const T& d) const
+find	./01list.h	/^	int find(const T& d)const;$/;"	p	class:List	access:public	signature:(const T& d) const
+find	./06bst.cpp	/^	tree& find(const T& d){return find(rp,d);}$/;"	f	class:bst	access:public	signature:(const T& d)
+find	./06bst.cpp	/^	tree& find(tree& t,const T& d){\/\/返回以d为根结点的子树的根指针$/;"	f	class:bst	access:public	signature:(tree& t,const T& d)
+front	./01list.h	/^	const T& front()const{if(empty())throw"空";return head->data;}$/;"	f	class:List	access:public	signature:() const
+front	./04queue.cpp	/^	const T& front()const {return l.front();}$/;"	f	class:Queue	access:public	signature:() const
+front	./05queue.cpp	/^		const T& front()const {return a[b%5];}$/;"	f	class:Queue	access:public	signature:() const
+full	./02stack.cpp	/^	bool full()const{return cur==5;}\/\/是否已满$/;"	f	class:Stack	access:public	signature:() const
+full	./03stack.cpp	/^	bool full()const{return false;}\/\/是否已满$/;"	f	class:Stack	access:public	signature:() const
+full	./04queue.cpp	/^	bool full()const{return false;}$/;"	f	class:Queue	access:public	signature:() const
+full	./05queue.cpp	/^		bool full()const{return n==5;}$/;"	f	class:Queue	access:public	signature:() const
+getptr	./01list.cpp	/^List::Node*& List::getptr(int pos){\/\/找链表中指向指定位置的指针$/;"	f	class:List	signature:(int pos)
+getptr	./01list.h	/^	Node*& getptr(int pos);\/\/找链表中指向指定位置的指针$/;"	p	class:List	access:public	signature:(int pos)
+gx	./01list.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+head	./01list.h	/^	Node* head;\/\/头指针，用来保存头节点的地址$/;"	m	class:List	access:private
+high	./06bst.cpp	/^	int high(tree t){$/;"	f	class:bst	access:public	signature:(tree t)
+insert	./01list.cpp	/^void List::insert(const T& d,int pos){\/\/在任意位置插入$/;"	f	class:List	signature:(const T& d,int pos)
+insert	./01list.h	/^	void insert(const T& d,int pos);\/\/在任意位置插入$/;"	p	class:List	access:public	signature:(const T& d,int pos)
+insert	./06bst.cpp	/^	void insert(const T& d){insert(rp,new Node(d));++n;}$/;"	f	class:bst	access:public	signature:(const T& d)
+insert	./06bst.cpp	/^	void insert(tree& t, Node* p){$/;"	f	class:bst	access:public	signature:(tree& t, Node* p)
+l	./03stack.cpp	/^	List l;\/\/组合$/;"	m	class:Stack	file:	access:private
+l	./04queue.cpp	/^	List l;$/;"	m	class:Queue	file:	access:private
+len	./01list.h	/^	int len;$/;"	m	class:List	access:private
+main	./01main.cpp	/^int main()$/;"	f	signature:()
+main	./02stack.cpp	/^int main()$/;"	f	signature:()
+main	./03stack.cpp	/^int main()$/;"	f	signature:()
+main	./04queue.cpp	/^int main(){$/;"	f	signature:()
+main	./05queue.cpp	/^int main(){$/;"	f	signature:()
+main	./06bst.cpp	/^int main()$/;"	f	signature:()
+n	./05queue.cpp	/^	int b,n;\/\/队首位置和有效元素个数$/;"	m	class:Queue	file:	access:private
+n	./06bst.cpp	/^	int n;$/;"	m	class:bst	file:	access:private
+next	./01list.h	/^		Node* next;$/;"	m	struct:List::Node	access:public
+pop	./02stack.cpp	/^	T pop()throw(const char*);\/\/stack顶数据出stack$/;"	p	class:Stack	file:	access:public	signature:()
+pop	./02stack.cpp	/^T Stack::pop()throw(const char*){$/;"	f	class:Stack	signature:()
+pop	./03stack.cpp	/^	T pop();\/\/stack顶数据出stack$/;"	p	class:Stack	file:	access:public	signature:()
+pop	./03stack.cpp	/^T Stack::pop(){$/;"	f	class:Stack	signature:()
+pop	./04queue.cpp	/^	T pop(){T t=front();l.erase(0);return t;}$/;"	f	class:Queue	access:public	signature:()
+pop	./05queue.cpp	/^	T pop(){$/;"	f	class:Queue	access:public	signature:()
+push	./02stack.cpp	/^	void push(const T& d)throw(const char*);\/\/数据入stack成为stack顶$/;"	p	class:Stack	file:	access:public	signature:(const T& d)
+push	./02stack.cpp	/^void Stack::push(const T&d)throw(const char*){$/;"	f	class:Stack	signature:(const T&d)
+push	./03stack.cpp	/^	void push(const T& d);\/\/数据入stack成为stack顶$/;"	p	class:Stack	file:	access:public	signature:(const T& d)
+push	./03stack.cpp	/^void Stack::push(const T&d){$/;"	f	class:Stack	signature:(const T&d)
+push	./04queue.cpp	/^	Queue& push(const T& d){l.push_back(d);return *this;}$/;"	f	class:Queue	access:public	signature:(const T& d)
+push	./05queue.cpp	/^	Queue& push(const T&d){$/;"	f	class:Queue	access:public	signature:(const T&d)
+push_back	./01list.cpp	/^List& List::push_back(const T& d){\/\/尾插$/;"	f	class:List	signature:(const T& d)
+push_back	./01list.h	/^	List& push_back(const T& d);\/\/尾插$/;"	p	class:List	access:public	signature:(const T& d)
+push_front	./01list.cpp	/^void List::push_front(const T&d){$/;"	f	class:List	signature:(const T&d)
+push_front	./01list.h	/^	void push_front(const T& d);\/\/前插$/;"	p	class:List	access:public	signature:(const T& d)
+remove	./01list.cpp	/^void List::remove(const T& d){$/;"	f	class:List	signature:(const T& d)
+remove	./01list.h	/^	void remove(const T& d);$/;"	p	class:List	access:public	signature:(const T& d)
+remove	./06bst.cpp	/^	bool remove(const T& d){$/;"	f	class:bst	access:public	signature:(const T& d)
+root	./06bst.cpp	/^	const T& root()const{if(!rp)throw "空";return rp->data;}$/;"	f	class:bst	access:public	signature:() const
+rp	./06bst.cpp	/^	Node* rp;$/;"	m	class:bst	file:	access:private
+rt	./06bst.cpp	/^	const tree& rt()const{$/;"	f	class:bst	access:public	signature:() const
+s:cpo_save	./01list.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	./01list.vim	/^let s:l = 38 - ((20 * winheight(0) + 10) \/ 21)$/;"	v
+s:so_save	./01list.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	./01list.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	./01list.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+set	./01list.cpp	/^void List::set(int pos,const T& d){$/;"	f	class:List	signature:(int pos,const T& d)
+set	./01list.h	/^	void set(int pos,const T& d);$/;"	p	class:List	access:public	signature:(int pos,const T& d)
+size	./01list.cpp	/^int List::size()const{$/;"	f	class:List	signature:() const
+size	./01list.h	/^	int size()const;$/;"	p	class:List	access:public	signature:() const
+size	./02stack.cpp	/^	int size()const{return cur;}\/\/栈中数据个数$/;"	f	class:Stack	access:public	signature:() const
+size	./03stack.cpp	/^	int size()const{return l.size();}\/\/栈中数据个数$/;"	f	class:Stack	access:public	signature:() const
+size	./04queue.cpp	/^	int size()const{return l.size();}$/;"	f	class:Queue	access:public	signature:() const
+size	./05queue.cpp	/^		int size()const{return n;}$/;"	f	class:Queue	access:public	signature:() const
+size	./06bst.cpp	/^	int size()const{return n;}$/;"	f	class:bst	access:public	signature:() const
+top	./02stack.cpp	/^	const T& top()const throw(const char*);\/\/取得stack顶数据$/;"	p	class:Stack	file:	access:public	signature:() const
+top	./02stack.cpp	/^const T& Stack::top()const throw(const char*){$/;"	f	class:Stack	signature:() const
+top	./03stack.cpp	/^	const T& top()const;\/\/取得stack顶数据$/;"	p	class:Stack	file:	access:public	signature:() const
+top	./03stack.cpp	/^const T& Stack::top()const {$/;"	f	class:Stack	signature:() const
+travel	./01list.cpp	/^void List::travel()const{\/\/遍历$/;"	f	class:List	signature:() const
+travel	./01list.h	/^	void travel()const;\/\/遍历$/;"	p	class:List	access:public	signature:() const
+travel	./06bst.cpp	/^	void travel()const{travel(rp);cout<<endl;}$/;"	f	class:bst	access:public	signature:() const
+travel	./06bst.cpp	/^	void travel(tree t)const{$/;"	f	class:bst	access:public	signature:(tree t) const
+tree	./06bst.cpp	/^	typedef Node* tree;$/;"	t	class:bst	file:	access:private
+update	./06bst.cpp	/^	void update(const T& olddate,const T& newdata){$/;"	f	class:bst	access:public	signature:(const T& olddate,const T& newdata)
+zt	./01list.vim	/^normal! zt$/;"	m
+~List	./01list.cpp	/^List::~List(){$/;"	f	class:List	signature:()
+~List	./01list.h	/^	~List();$/;"	p	class:List	access:public	signature:()
+~bst	./06bst.cpp	/^	~bst(){clear();}$/;"	f	class:bst	access:public	signature:()
+¤	./01list.vim	/^imap ¤ $a$/;"	m
+°	./01list.vim	/^imap ° 0i$/;"	m

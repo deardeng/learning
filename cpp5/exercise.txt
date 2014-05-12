@@ -1,0 +1,11 @@
+1、写一个数据库类Database，提供connect(),query()两个虚函数。写一个程序类Program，有一个公开成员函数
+void visit(Database* p){
+	p->connect();
+	p->query();
+}
+再写三个数据库子类Access、SQLServer和Oracle，覆盖connect(),query()两个虚函数。在main函数中用一个Program对象分别访问这三种数据库。
+2、写一个艺术品类Arts，提供一个print()函数显示艺术品的信息。写两个艺术品子类Painting和Music，其中Painting信息有作者、年代、尺寸，Music再分两个子类：流行音乐和摇滚，前者的信息包括作者、年代、时间长短和演唱者，后者的信息作者、年代、时间长短和演奏人数。写一个全局函数
+void show(Arts& a){
+	a.print();
+}
+在main函数里用每种艺术品子类创建一个对象，调用show函数分别显示它们的信息。

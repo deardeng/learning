@@ -1,0 +1,318 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	./7.18.c	/^int A,B,C;$/;"	v
+A	./7.19.file1.c	/^int A;$/;"	v
+B	./7.18.c	/^int A,B,C;$/;"	v
+C	./7.18.c	/^int A,B,C;$/;"	v
+Hcf	./l7.1.1.c	/^int Hcf,Lcd;$/;"	v
+Lcd	./l7.1.1.c	/^int Hcf,Lcd;$/;"	v
+M	./l4.5.1.c	3;"	d	file:
+M	./l4.5.c	3;"	d	file:
+M	./l5.9.1.c	1;"	d	file:
+M	./l6.8.c	3;"	d	file:
+M	./l7.14.c	3;"	d	file:
+MAX	./l7.16.c	2;"	d	file:
+Max	./7.14.c	/^float Max=0,Min=0;$/;"	v
+Min	./7.14.c	/^float Max=0,Min=0;$/;"	v
+N	./l6.5.c	2;"	d	file:
+N	./l6.6.c	2;"	d	file:
+N	./l6.8.c	2;"	d	file:
+N	./l6.9.c	2;"	d	file:
+N	./l6.9_setbuf.c	2;"	d	file:
+N	./l7.11.c	3;"	d	file:
+N	./l7.14.c	2;"	d	file:
+N	./l7.15.c	3;"	d	file:
+N	./l7.4.c	2;"	d	file:
+SUM	./5.4.c	2;"	d	file:
+a	./7.15.c	/^int a=3,b=5;$/;"	v
+a_cour	./l7.14.c	/^float a_stu[N],a_cour[M];$/;"	v
+a_stu	./l7.14.c	/^float a_stu[N],a_cour[M];$/;"	v
+action1	./4.8.c	/^void action1(int x,int y)$/;"	f
+action2	./4.8.c	/^void action2(int x,int y)$/;"	f
+add	./7.4.c	/^float add(float x,float y)$/;"	f
+age	./7.6.c	/^int age(int n)$/;"	f
+alphabetic	./l7.10.c	/^int alphabetic(char c)$/;"	f
+array	./l7.4.c	/^int array[N][N];$/;"	v
+aver_cour	./l7.14.c	/^void aver_cour(void)$/;"	f
+aver_stu	./l7.14.c	/^void aver_stu(void){$/;"	f
+average	./7.10.c	/^float average(float array[])$/;"	f
+average	./7.11.c	/^float average(float array[],int n)$/;"	f
+average	./7.14.c	/^float average(float array[],int n)$/;"	f
+average	./8.14.c	/^void average(float *p,int n){$/;"	f
+b	./7.15.c	/^int a=3,b=5;$/;"	v
+c	./l7.14.c	/^int r,c;$/;"	v
+calculate	./l7.13.bak.c	/^int calculate(int x,int n){$/;"	f
+concatenate	./l7.6.c	/^void concatenate(char string1[],char string2[],char string[]){$/;"	f
+convert	./l7.17.c	/^void convert(int n){$/;"	f
+convert	./l7.4.c	/^void convert(int array[][3])$/;"	f
+copy_string	./8.20.1.c	/^void copy_string(char from[],char to[]){$/;"	f
+copy_string	./8.20.2.c	/^void copy_string(char from[],char to[]){$/;"	f
+copy_string	./8.20.3.c	/^void copy_string(char *from,char *to){$/;"	f
+count	./l7.9.c	/^void count(char str[]){$/;"	f
+cpy	./l7.7.c	/^void cpy(char s[],char c[]){$/;"	f
+delete_string	./7.20.file3.c	/^void delete_string(char str[],char ch)$/;"	f
+digit	./l7.9.c	/^int letter,digit,space,others;$/;"	v
+disc	./l7.2.c	/^float x1,x2,disc,p,q;$/;"	v
+enter_string	./7.20.file2.c	/^void enter_string(char str[80])$/;"	f
+equal_to_zero	./l7.2.c	/^void equal_to_zero(float a,float b){$/;"	f
+exchange	./8.4.c	/^void exchange(int* q1,int* q2,int* q3)$/;"	f
+f	./7.16.c	/^int f(int a)$/;"	f
+fac	./7.17.c	/^int fac(int n){$/;"	f
+fac	./7.7.c	/^int fac(int n)$/;"	f
+greater_than_zero	./l7.2.c	/^void greater_than_zero(float a,float b){$/;"	f
+han	./7.8.me.c	/^void han(int m,char a,char b,char c){$/;"	f
+hanoi	./7.8.c	/^void hanoi(int n,char one,char two,char three)$/;"	f
+hcf	./l7.1.1.c	/^void hcf(int u,int v)$/;"	f
+highest	./l7.14.c	/^float highest()$/;"	f
+htoi	./l7.16.c	/^int htoi(char s[])$/;"	f
+input	./l7.15.c	/^void input(int num[],char name[N][8]){$/;"	f
+input_stu	./l7.14.c	/^void input_stu(void)$/;"	f
+insert	./l7.8.c	/^void insert(char str[])$/;"	f
+inv	./8.8.1.c	/^void inv(int* x,int n)$/;"	f
+inv	./8.8.c	/^void inv(int x[],int n)$/;"	f
+inv	./8.9.c	/^void inv(int *x,int n)$/;"	f
+inverse	./l7.5.c	/^void inverse(char str[])$/;"	f
+is_alpha	./l7.10.bak.c	/^int is_alpha(char c){$/;"	f
+lcd	./l7.1.1.c	/^void lcd(int u,int v)$/;"	f
+leap	./l7.18.c	/^int leap(int year){$/;"	f
+letter	./l7.9.c	/^int letter,digit,space,others;$/;"	v
+longest	./l7.10.c	/^int longest(char string[])$/;"	f
+main	./1.2.c	/^int main()$/;"	f
+main	./1.3.c	/^int main()$/;"	f
+main	./2.18.c	/^int main()$/;"	f
+main	./2.19.c	/^int main()$/;"	f
+main	./3.1.c	/^int main()$/;"	f
+main	./3.10.1.c	/^int main()$/;"	f
+main	./3.10.c	/^int main()$/;"	f
+main	./3.2.c	/^int main()$/;"	f
+main	./3.3.c	/^int main()$/;"	f
+main	./3.4.c	/^int main()$/;"	f
+main	./3.5.c	/^int main()$/;"	f
+main	./3.6.c	/^int main()$/;"	f
+main	./3.7.c	/^int main()$/;"	f
+main	./3.8.1.c	/^int main()$/;"	f
+main	./3.8.c	/^int main()$/;"	f
+main	./3.9.1.c	/^int main()$/;"	f
+main	./3.9.c	/^int main()$/;"	f
+main	./4.1.c	/^int main()$/;"	f
+main	./4.10.c	/^int main()$/;"	f
+main	./4.2.c	/^int main()$/;"	f
+main	./4.3.c	/^int main()$/;"	f
+main	./4.4.c	/^int main()$/;"	f
+main	./4.5.c	/^int main()$/;"	f
+main	./4.6.c	/^int main()$/;"	f
+main	./4.7.c	/^int main()$/;"	f
+main	./4.8.1.c	/^int main()$/;"	f
+main	./4.8.c	/^int main()$/;"	f
+main	./4.9.c	/^int main()$/;"	f
+main	./5.1.c	/^int main()$/;"	f
+main	./5.10.c	/^int main()$/;"	f
+main	./5.11.1.c	/^int main()$/;"	f
+main	./5.11.c	/^int main()$/;"	f
+main	./5.2.c	/^int main()$/;"	f
+main	./5.3.1.c	/^int main()$/;"	f
+main	./5.3.2.c	/^int main()$/;"	f
+main	./5.4.c	/^int main()$/;"	f
+main	./5.5.1.c	/^int main()$/;"	f
+main	./5.5.c	/^int main()$/;"	f
+main	./5.6.1.c	/^int main()$/;"	f
+main	./5.6.c	/^int main()$/;"	f
+main	./5.7.c	/^int main()$/;"	f
+main	./5.8.1.c	/^int main()$/;"	f
+main	./5.8.c	/^int main()$/;"	f
+main	./5.9.1.c	/^int main()$/;"	f
+main	./5.9.c	/^int main()$/;"	f
+main	./6.1.c	/^int main()$/;"	f
+main	./6.2.c	/^int main(){$/;"	f
+main	./6.4.c	/^int main(){$/;"	f
+main	./6.5.c	/^int main(){$/;"	f
+main	./6.6.c	/^int main()$/;"	f
+main	./6.7.c	/^int main()$/;"	f
+main	./6.8.c	/^int main(){$/;"	f
+main	./6.9.c	/^int main(){$/;"	f
+main	./7.1.c	/^int main()$/;"	f
+main	./7.10.c	/^int main()$/;"	f
+main	./7.11.c	/^int main()$/;"	f
+main	./7.12.c	/^int main()$/;"	f
+main	./7.13.c	/^int main()$/;"	f
+main	./7.14.c	/^int main()$/;"	f
+main	./7.15.c	/^int main(){$/;"	f
+main	./7.16.c	/^int main(){$/;"	f
+main	./7.17.c	/^int main(){$/;"	f
+main	./7.18.c	/^int main()$/;"	f
+main	./7.19.file1.c	/^int main()$/;"	f
+main	./7.2.c	/^int main()$/;"	f
+main	./7.20.file1.c	/^int main()$/;"	f
+main	./7.3.c	/^int main()$/;"	f
+main	./7.4.c	/^int main()$/;"	f
+main	./7.5.c	/^int main()$/;"	f
+main	./7.6.c	/^int main()$/;"	f
+main	./7.7.c	/^int main()$/;"	f
+main	./7.8.c	/^int main()$/;"	f
+main	./7.8.me.c	/^int main()$/;"	f
+main	./7.9.c	/^int main()$/;"	f
+main	./8.1.c	/^int main()$/;"	f
+main	./8.10.c	/^int main()$/;"	f
+main	./8.11.c	/^int main(){$/;"	f
+main	./8.12.c	/^int main()$/;"	f
+main	./8.13.1.c	/^int main(){$/;"	f
+main	./8.13.c	/^int main(){$/;"	f
+main	./8.14.c	/^int main(){$/;"	f
+main	./8.15.c	/^int main(){$/;"	f
+main	./8.16.c	/^int main(){$/;"	f
+main	./8.17.c	/^int main(){$/;"	f
+main	./8.18.c	/^int main(){$/;"	f
+main	./8.19.c	/^int main(){$/;"	f
+main	./8.2.c	/^int main()$/;"	f
+main	./8.20.1.c	/^int main(){$/;"	f
+main	./8.20.2.c	/^int main(){$/;"	f
+main	./8.20.3.c	/^int main(){$/;"	f
+main	./8.21.c	/^int main(){$/;"	f
+main	./8.22.1.c	/^int main()$/;"	f
+main	./8.22.c	/^int main(){$/;"	f
+main	./8.3.c	/^int main(){$/;"	f
+main	./8.4.c	/^int main()$/;"	f
+main	./8.5.c	/^int main()$/;"	f
+main	./8.6.1.c	/^int main()$/;"	f
+main	./8.6.2.c	/^int main()$/;"	f
+main	./8.6.3.c	/^int main()$/;"	f
+main	./8.7.c	/^int main()$/;"	f
+main	./8.8.1.c	/^int main()$/;"	f
+main	./8.8.c	/^int main()$/;"	f
+main	./8.9.c	/^int main()$/;"	f
+main	./l1.5.c	/^void main()$/;"	f
+main	./l1.6.c	/^void main()$/;"	f
+main	./l2.4.2.c	/^int main()$/;"	f
+main	./l2.4.3.c	/^int main()$/;"	f
+main	./l2.4.4.c	/^int main(){$/;"	f
+main	./l2.4.5.1.c	/^int main(){$/;"	f
+main	./l2.4.5.2.c	/^int main(){$/;"	f
+main	./l2.4.6.c	/^int main(){$/;"	f
+main	./l2.4.7.c	/^int main(){$/;"	f
+main	./l3.1.c	/^int main()$/;"	f
+main	./l3.5.c	/^int main()$/;"	f
+main	./l3.6.c	/^int main()$/;"	f
+main	./l3.7.c	/^int main()$/;"	f
+main	./l3.8.1.c	/^int main()$/;"	f
+main	./l3.8.2.c	/^int main()$/;"	f
+main	./l3.8.3.c	/^int main()$/;"	f
+main	./l3.8.c	/^int main()$/;"	f
+main	./l4.10.1.c	/^int main()$/;"	f
+main	./l4.10.2.c	/^int main()$/;"	f
+main	./l4.11.c	/^int main()$/;"	f
+main	./l4.12.c	/^int main()$/;"	f
+main	./l4.4.1.c	/^int main()$/;"	f
+main	./l4.4.c	/^int main()$/;"	f
+main	./l4.5.1.c	/^int main()$/;"	f
+main	./l4.5.c	/^int main()$/;"	f
+main	./l4.6.c	/^int main()$/;"	f
+main	./l4.7.c	/^int main()$/;"	f
+main	./l4.9.c	/^int main()$/;"	f
+main	./l5.1.2.c	/^int main()$/;"	f
+main	./l5.1.3.c	/^int main()$/;"	f
+main	./l5.1.c	/^int main()$/;"	f
+main	./l5.10.c	/^int main()$/;"	f
+main	./l5.11.c	/^int main()$/;"	f
+main	./l5.12.c	/^int main()$/;"	f
+main	./l5.13.c	/^int main(){$/;"	f
+main	./l5.14.c	/^int main()$/;"	f
+main	./l5.15.c	/^int main()$/;"	f
+main	./l5.16.c	/^int main(){$/;"	f
+main	./l5.17.c	/^int main(){$/;"	f
+main	./l5.2.1.c	/^int main()$/;"	f
+main	./l5.3.c	/^int main(){$/;"	f
+main	./l5.4.c	/^int main()$/;"	f
+main	./l5.5.c	/^int main()$/;"	f
+main	./l5.6.c	/^int main()$/;"	f
+main	./l5.7.c	/^int main()$/;"	f
+main	./l5.8.c	/^int main()$/;"	f
+main	./l5.9.1.c	/^int main()$/;"	f
+main	./l5.9.2.c	/^int main()$/;"	f
+main	./l6.1.c	/^int main(){$/;"	f
+main	./l6.10.c	/^int main(){$/;"	f
+main	./l6.11.c	/^int main()$/;"	f
+main	./l6.12.1.c	/^int main()$/;"	f
+main	./l6.12.2.c	/^int main()$/;"	f
+main	./l6.13.c	/^int main()$/;"	f
+main	./l6.14.c	/^int main()$/;"	f
+main	./l6.15.c	/^int main()$/;"	f
+main	./l6.2.c	/^int main()$/;"	f
+main	./l6.3.c	/^int main()$/;"	f
+main	./l6.4.c	/^int main()$/;"	f
+main	./l6.5.c	/^int main()$/;"	f
+main	./l6.6.c	/^int main()$/;"	f
+main	./l6.7.c	/^int main()$/;"	f
+main	./l6.8.c	/^int main()$/;"	f
+main	./l6.9.c	/^int main()$/;"	f
+main	./l6.9_setbuf.c	/^int main()$/;"	f
+main	./l7.1.1.c	/^int main()$/;"	f
+main	./l7.10.bak.c	/^int main(){$/;"	f
+main	./l7.10.c	/^int main(){$/;"	f
+main	./l7.11.c	/^int main()$/;"	f
+main	./l7.12.c	/^int main()$/;"	f
+main	./l7.13.bak.c	/^int main()$/;"	f
+main	./l7.13.c	/^int main()$/;"	f
+main	./l7.14.c	/^int main(){$/;"	f
+main	./l7.15.c	/^int main()$/;"	f
+main	./l7.16.c	/^int main(){$/;"	f
+main	./l7.17.c	/^int main(){$/;"	f
+main	./l7.18.c	/^int main()$/;"	f
+main	./l7.2.c	/^int main()$/;"	f
+main	./l7.3.c	/^int main()$/;"	f
+main	./l7.4.c	/^int main()$/;"	f
+main	./l7.5.c	/^int main(){$/;"	f
+main	./l7.6.c	/^int main(){$/;"	f
+main	./l7.7.c	/^int main(){$/;"	f
+main	./l7.8.c	/^int main(){$/;"	f
+main	./l7.9.c	/^int main(){$/;"	f
+main	./t.cpp	/^int main()$/;"	f
+max	./1.3.c	/^int max(int x,int y)$/;"	f
+max	./7.18.c	/^int max()$/;"	f
+max	./7.2.c	/^int max(int x,int y)$/;"	f
+max	./7.3.c	/^int max(float x,float y)$/;"	f
+max	./7.9.c	/^int max(int x,int y){$/;"	f
+max	./8.22.1.c	/^int max(int x,int y){$/;"	f
+max	./8.22.c	/^int max(int x,int y){$/;"	f
+max	./l1.6.c	/^int max(int a,int b,int c)$/;"	f
+max2	./7.5.c	/^int max2(int a,int b)$/;"	f
+max4	./7.5.c	/^int max4(int a,int b,int c,int d){$/;"	f
+max_value	./7.13.c	/^int max_value(int array[][4])$/;"	f
+move	./7.8.c	/^void move(char x,char y)$/;"	f
+move	./7.8.me.c	/^void move(char x,char y){$/;"	f
+others	./l7.9.c	/^int letter,digit,space,others;$/;"	v
+p	./l7.13.c	/^float p(int n,int x)$/;"	f
+p	./l7.2.c	/^float x1,x2,disc,p,q;$/;"	v
+pointer_1	./8.5.c	/^static int *pointer_1,*pointer_2;$/;"	v	file:
+pointer_2	./8.5.c	/^static int *pointer_1,*pointer_2;$/;"	v	file:
+power	./7.19.file2.c	/^int power(int n)$/;"	f
+prime	./l7.3.c	/^int prime(int n)$/;"	f
+print_message	./7.1.c	/^void print_message()$/;"	f
+print_star	./7.1.c	/^void print_star()$/;"	f
+print_string	./7.20.file4.c	/^void print_string(char str[])$/;"	f
+q	./l7.2.c	/^float x1,x2,disc,p,q;$/;"	v
+r	./l7.14.c	/^int r,c;$/;"	v
+s_var	./l7.14.c	/^float s_var(void)$/;"	f
+score	./l7.14.c	/^float score[N][M];$/;"	v
+search	./8.14.c	/^void search(float(*p)[4],int n){$/;"	f
+search	./8.15.c	/^void search(float (*p)[4],int n){$/;"	f
+search	./l7.15.c	/^void search(int n,int num[],char name[N][8])$/;"	f
+smaller_than_zero	./l7.2.c	/^void smaller_than_zero(float a,float b){$/;"	f
+solut	./l7.12.c	/^float solut(float a,float b,float c,float d)$/;"	f
+sort	./7.12.c	/^void sort(int array[],int n){$/;"	f
+sort	./8.10.c	/^void sort(int x[],int n)$/;"	f
+sort	./l7.11.c	/^void sort(char str[])$/;"	f
+sort	./l7.15.c	/^void sort(int num[],char name[N][8]){$/;"	f
+space	./l7.9.c	/^int letter,digit,space,others;$/;"	v
+str	./l7.11.c	/^char str[N];$/;"	v
+sum_day	./l7.18.c	/^int sum_day(int month,int day){$/;"	f
+swap	./8.3.c	/^void swap(int* p1,int* p2)$/;"	f
+swap	./8.4.c	/^void swap(int* pt1,int *pt2){$/;"	f
+swap	./8.5.c	/^void swap(int *pointer_1,int *pointer_2)$/;"	f
+swap	./l2.4.3.c	/^void swap(int* m ,int* n)$/;"	f
+work	./l7.10.bak.c	/^int work(char str[]){$/;"	f
+x1	./l7.2.c	/^float x1,x2,disc,p,q;$/;"	v
+x2	./l7.2.c	/^float x1,x2,disc,p,q;$/;"	v
