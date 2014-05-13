@@ -15,7 +15,8 @@ int main(){
     }
     cout << "Transformed elements from the vector:" << endl;
     vector<string>::size_type cnt=0;
-    for(vector<string>::iterator iter=svec.begin();iter!=svec.end();++iter){
+    vector<string>::iterator iter;
+    for(iter=svec.begin();iter!=svec.end();++iter){
         for(string::size_type index=0;index!=(*iter).size();++index)
             if(islower((*iter)[index]))
                 (*iter)[index]=toupper((*iter)[index]);

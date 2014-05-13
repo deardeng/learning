@@ -20,6 +20,7 @@ int main(){
         if(cnt%6==0)
             cout << endl;
     }
+    cout << endl;
     if(first==last)
         cout << endl << "The center element is not been summed" << "and its value is " << *first << endl;
     return 0;

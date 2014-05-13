@@ -19,6 +19,7 @@ int main(){
         if(cnt%3==2)
             cout << endl;
     }
+    cout << endl;
     if(ivec.size()%2!=0)
         cout << endl << "The last element is not been summed" << "and its value is " << *(ivec.end()-1) << endl;
     else 
