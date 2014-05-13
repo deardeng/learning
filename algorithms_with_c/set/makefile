@@ -2,7 +2,7 @@
 CC=gcc
 CFLAGS=-Wall -g
 BIN= main
-OBJS= ex-1.o list.o set.o
+OBJS= ex-2.c cover.c list.c set.c
 $(BIN):$(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 %.o:%.c

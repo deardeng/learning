@@ -2,7 +2,7 @@
 CC=gcc
 CFLAGS=-Wall -g
 BIN= main
-OBJS= g_client.c
+OBJS= l17.9.c
 $(BIN):$(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 %.o:%.c
