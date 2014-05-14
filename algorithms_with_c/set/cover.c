@@ -16,8 +16,8 @@ int cover(Set *members,Set *subsets,Set *covering){
     while(set_size(members)>0&&set_size(subsets)>0){
         max_size=0;
         for(member=list_head(subsets);member!=NULL;member=list_next(member)){
-            if(set_intersection(&intersection,&((KSet *)list_data(member))->set,members)!=0){
-                return -1;
+            if(set_intersection(&intersection,&(((KSet *)list_data(member))->set),members)!=0){
+                return -1;//其他
             }
             if(set_size(&intersection)>max_size){
                 max_member=member;
@@ -27,8 +27,8 @@ int cover(Set *members,Set *subsets,Set *covering){
         }
 
         if(max_size==0)
-            return 1;
-        subset=(KSet *)list_data(max_member);
+            return 1;//不完全覆盖
+        subset=(KSet *)list_data(max_member);//((max_member)->data
         if(set_insert(covering,subset)!=0)
             return -1;
 
@@ -42,5 +42,5 @@ int cover(Set *members,Set *subsets,Set *covering){
     }
     if(set_size(members)>0)
         return -1;
-    return 0;
+    return 0;//完全覆盖
 }

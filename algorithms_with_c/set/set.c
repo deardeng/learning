@@ -33,7 +33,8 @@ int set_union(Set *setu,const Set *set1,const Set *set2){
     ListElmt *member;
     void *data;
 
-    set_init(setu,set1->match,NULL);
+    //set_init(setu,set1->match,set1->destroy);
+    set_init(setu,set1->match,NULL);//此处不能传set1->destroy因为之后会调用list_destroy函数中list->destroy(data);将会销毁set1，set2中的data数据，程序后面全错。NULL传过去，list_destroy函数中if判断总是0，导致list_destroy函数只调用list_rem_next。
 
     for(member=list_head(set1);member!=NULL;member=list_next(member)){
         data=list_data(member);
@@ -62,7 +63,8 @@ int set_intersection(Set *seti,const Set *set1,const Set *set2){
     ListElmt *member;
     void *data;
 
-    set_init(seti,set1->match,NULL);
+    //set_init(seti,set1->match,set1->destroy);
+    set_init(seti,set1->match,NULL);//****same to line 37.
 
     for(member=list_head(set1);member!=NULL;member=list_next(member)){
         if(set_is_member(set2,list_data(member))){
@@ -80,7 +82,8 @@ int set_difference(Set *setd,const Set *set1,const Set *set2){
     ListElmt *member;
     void *data;
 
-    set_init(setd,set1->match,NULL);
+    set_init(setd,set1->match,NULL);//****same to line 37.
+    //set_init(setd,set1->match,set1->destroy);
 
     for(member=list_head(set1);member!=NULL;member=list_next(member)){
         if(!set_is_member(set2,list_data(member))){

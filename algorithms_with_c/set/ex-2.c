@@ -216,6 +216,7 @@ int main(int argc, char **argv) {
     print_players(&players);
     fprintf(stdout, "Generating the cover\n");
 
+
     if ((retval = cover(&skills, &players, &covering)) != 0)
         return 1;
 
