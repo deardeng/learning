@@ -1,268 +1,176 @@
-/*****************************************************************************
-*                                                                            *
-*  ex-1.c                                                                    *
-*  ======                                                                    *
-*                                                                            *
-*  Description: Illustrates using a chained hash table (see Chapter 8).      *
-*                                                                            *
-*****************************************************************************/
-
 #include <stdio.h>
-
 #include "chtbl.h"
 #include "list.h"
-
-/*****************************************************************************
-*                                                                            *
-*  Define the size of the chained hash table.                                *
-*                                                                            *
-*****************************************************************************/
-
 #define            TBLSIZ               11
-
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------ match_char ------------------------------  *
-*                                                                            *
-*****************************************************************************/
-
 static int match_char(const void *char1, const void *char2) {
-
-/*****************************************************************************
-*                                                                            *
-*  Compare two characters.                                                   *
-*                                                                            *
-*****************************************************************************/
-
-return (*(const char *)char1 == *(const char *)char2);
-
+    return (*(const char *)char1 == *(const char *)char2);
 }
-
-/*****************************************************************************
-*                                                                            *
-*  -------------------------------- h_char --------------------------------  *
-*                                                                            *
-*****************************************************************************/
-
 static int h_char(const void *key) {
-
-/*****************************************************************************
-*                                                                            *
-*  Define a simplistic hash function.                                        *
-*                                                                            *
-*****************************************************************************/
-
-return *(const char *)key % TBLSIZ;
-
+    return *(const char *)key % TBLSIZ;
 }
-
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------ print_table -----------------------------  *
-*                                                                            *
-*****************************************************************************/
-
 static void print_table(const CHTbl *htbl) {
+    ListElmt           *element;
+    int                i;
+    fprintf(stdout, "Table size is %d\n", chtbl_size(htbl));
 
-ListElmt           *element;
+    for (i = 0; i < TBLSIZ; i++) {
 
-int                i;
+        fprintf(stdout, "Bucket[%03d]=", i);
 
-/*****************************************************************************
-*                                                                            *
-*  Display the chained hash table.                                           *
-*                                                                            *
-*****************************************************************************/
+        for (element = list_head(&htbl->table[i]); element != NULL; element =list_next(element)) {
 
-fprintf(stdout, "Table size is %d\n", chtbl_size(htbl));
+            fprintf(stdout, "%c", *(char *)list_data(element));
 
-for (i = 0; i < TBLSIZ; i++) {
+        }
 
-   fprintf(stdout, "Bucket[%03d]=", i);
+        fprintf(stdout, "\n");
 
-   for (element = list_head(&htbl->table[i]); element != NULL; element =
-      list_next(element)) {
+    }
 
-      fprintf(stdout, "%c", *(char *)list_data(element));
-
-   }
-
-   fprintf(stdout, "\n");
+    return;
 
 }
-
-return;
-
-}
-
-/*****************************************************************************
-*                                                                            *
-*  --------------------------------- main ---------------------------------  *
-*                                                                            *
-*****************************************************************************/
-
 int main(int argc, char **argv) {
 
-CHTbl              htbl;
+    CHTbl              htbl;
 
-char               *data,
-                   c;
+    char               *data,
+                       c;
 
-int                retval,
-                   i;
+    int                retval,
+                       i;
+    if (chtbl_init(&htbl, TBLSIZ, h_char, match_char, free) != 0)
+        return 1;
+    for (i = 0; i < TBLSIZ; i++) {
 
-/*****************************************************************************
-*                                                                            *
-*  Initialize the chained hash table.                                        *
-*                                                                            *
-*****************************************************************************/
+        if ((data = (char *)malloc(sizeof(char))) == NULL)
+            return 1;
 
-if (chtbl_init(&htbl, TBLSIZ, h_char, match_char, free) != 0)
-   return 1;
+        *data = ((5 + (i * 6)) % 23) + 'A';
 
-/*****************************************************************************
-*                                                                            *
-*  Perform some chained hash table operations.                               *
-*                                                                            *
-*****************************************************************************/
+        if (chtbl_insert(&htbl, data) != 0)
+            return 1;
 
-for (i = 0; i < TBLSIZ; i++) {
+        print_table(&htbl);
 
-   if ((data = (char *)malloc(sizeof(char))) == NULL)
-      return 1;
+    }
 
-   *data = ((5 + (i * 6)) % 23) + 'A';
+    for (i = 0; i < TBLSIZ; i++) {
 
-   if (chtbl_insert(&htbl, data) != 0)
-      return 1;
+        if ((data = (char *)malloc(sizeof(char))) == NULL)
+            return 1;
 
-   print_table(&htbl);
+        *data = ((3 + (i * 4)) % 23) + 'a';
 
-}
+        if (chtbl_insert(&htbl, data) != 0)
+            return 1;
 
-for (i = 0; i < TBLSIZ; i++) {
+        print_table(&htbl);
 
-   if ((data = (char *)malloc(sizeof(char))) == NULL)
-      return 1;
+    }
 
-   *data = ((3 + (i * 4)) % 23) + 'a';
+    if ((data = (char *)malloc(sizeof(char))) == NULL)
+        return 1;
 
-   if (chtbl_insert(&htbl, data) != 0)
-      return 1;
+    *data = 'd';
 
-   print_table(&htbl);
+    if ((retval = chtbl_insert(&htbl, data)) != 0)
+        free(data);//释放上面malloc分配的内存
 
-}
+    fprintf(stdout, "Trying to insert d again...Value=%d (1=OK)\n", retval);
 
-if ((data = (char *)malloc(sizeof(char))) == NULL)
-   return 1;
+    if ((data = (char *)malloc(sizeof(char))) == NULL)
+        return 1;
 
-*data = 'd';
+    *data = 'G';
 
-if ((retval = chtbl_insert(&htbl, data)) != 0)
-   free(data);
+    if ((retval = chtbl_insert(&htbl, data)) != 0)
+        free(data);
 
-fprintf(stdout, "Trying to insert d again...Value=%d (1=OK)\n", retval);
+    fprintf(stdout, "Trying to insert G again...Value=%d (1=OK)\n", retval);
 
-if ((data = (char *)malloc(sizeof(char))) == NULL)
-   return 1;
+    fprintf(stdout, "Removing d, G, and S\n");
 
-*data = 'G';
+    c = 'd';
+    data = &c;
 
-if ((retval = chtbl_insert(&htbl, data)) != 0)
-   free(data);
+    if (chtbl_remove(&htbl, (void **)&data) == 0)
+        free(data);
 
-fprintf(stdout, "Trying to insert G again...Value=%d (1=OK)\n", retval);
+    c = 'G';
+    data = &c;
 
-fprintf(stdout, "Removing d, G, and S\n");
+    if (chtbl_remove(&htbl, (void **)&data) == 0)
+        free(data);
 
-c = 'd';
-data = &c;
+    c = 'S';
+    data = &c;
 
-if (chtbl_remove(&htbl, (void **)&data) == 0)
-   free(data);
+    if (chtbl_remove(&htbl, (void **)&data) == 0)
+        free(data);//释放chtbl_remove返回的data,其中存的是哈系表中.
 
-c = 'G';
-data = &c;
+    print_table(&htbl);
 
-if (chtbl_remove(&htbl, (void **)&data) == 0)
-   free(data);
+    if ((data = (char *)malloc(sizeof(char))) == NULL)
+        return 1;
 
-c = 'S';
-data = &c;
+    *data = 'd';
 
-if (chtbl_remove(&htbl, (void **)&data) == 0)
-   free(data);
+    if ((retval = chtbl_insert(&htbl, data)) != 0)
+        free(data);
 
-print_table(&htbl);
+    fprintf(stdout, "Trying to insert d again...Value=%d (0=OK)\n", retval);
 
-if ((data = (char *)malloc(sizeof(char))) == NULL)
-   return 1;
+    if ((data = (char *)malloc(sizeof(char))) == NULL)
+        return 1;
 
-*data = 'd';
+    *data = 'G';
 
-if ((retval = chtbl_insert(&htbl, data)) != 0)
-   free(data);
+    if ((retval = chtbl_insert(&htbl, data)) != 0)
+        free(data);
 
-fprintf(stdout, "Trying to insert d again...Value=%d (0=OK)\n", retval);
+    fprintf(stdout, "Trying to insert G again...Value=%d (0=OK)\n", retval);
 
-if ((data = (char *)malloc(sizeof(char))) == NULL)
-   return 1;
+    print_table(&htbl);
 
-*data = 'G';
+    fprintf(stdout, "Inserting X and Y\n");
 
-if ((retval = chtbl_insert(&htbl, data)) != 0)
-   free(data);
+    if ((data = (char *)malloc(sizeof(char))) == NULL)
+        return 1;
 
-fprintf(stdout, "Trying to insert G again...Value=%d (0=OK)\n", retval);
+    *data = 'X';
 
-print_table(&htbl);
+    if (chtbl_insert(&htbl, data) != 0)
+        return 1;
 
-fprintf(stdout, "Inserting X and Y\n");
+    if ((data = (char *)malloc(sizeof(char))) == NULL)
+        return 1;
 
-if ((data = (char *)malloc(sizeof(char))) == NULL)
-   return 1;
+    *data = 'Y';
 
-*data = 'X';
+    if (chtbl_insert(&htbl, data) != 0)
+        return 1;
 
-if (chtbl_insert(&htbl, data) != 0)
-   return 1;
+    print_table(&htbl);
 
-if ((data = (char *)malloc(sizeof(char))) == NULL)
-   return 1;
+    c = 'X';
+    data = &c;
 
-*data = 'Y';
+    if (chtbl_lookup(&htbl, (void **)&data) == 0)
+        fprintf(stdout, "Found an occurrence of X\n");
+    else
+        fprintf(stdout, "Did not find an occurrence of X\n");
 
-if (chtbl_insert(&htbl, data) != 0)
-   return 1;
+    c = 'Z';
+    data = &c;
 
-print_table(&htbl);
+    if (chtbl_lookup(&htbl, (void **)&data) == 0)
+        fprintf(stdout, "Found an occurrence of Z\n");
+    else
+        fprintf(stdout, "Did not find an occurrence of Z\n");
+    fprintf(stdout, "Destroying the hash table\n");
+    chtbl_destroy(&htbl);
 
-c = 'X';
-data = &c;
-
-if (chtbl_lookup(&htbl, (void **)&data) == 0)
-   fprintf(stdout, "Found an occurrence of X\n");
-else
-   fprintf(stdout, "Did not find an occurrence of X\n");
-
-c = 'Z';
-data = &c;
-
-if (chtbl_lookup(&htbl, (void **)&data) == 0)
-   fprintf(stdout, "Found an occurrence of Z\n");
-else
-   fprintf(stdout, "Did not find an occurrence of Z\n");
-
-/*****************************************************************************
-*                                                                            *
-*  Destroy the chained hash table.                                           *
-*                                                                            *
-*****************************************************************************/
-
-fprintf(stdout, "Destroying the hash table\n");
-chtbl_destroy(&htbl);
-
-return 0;
+    return 0;
 
 }
