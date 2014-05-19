@@ -26,7 +26,10 @@ int main()
 	union{
 		int n;
 		int date::*mp;
+                int (*p)();
 	};
+        p=main;
+        cout << "main=" << reinterpret_cast<void *>(n) << endl;
 	mp = &date::day;
 	cout << "n=" << n << endl;
 	cout << d.*mp << endl;
