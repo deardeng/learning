@@ -25,7 +25,7 @@ int bitree_merge(BiTree *merge,BiTree *left,BiTree *right,const void *data);
 
 #define bitree_size(tree) ((tree)->size)
 #define bitree_root(tree) ((tree)->root)
-#define bitree_is_eob(tree) ((node)==NULL)
+#define bitree_is_eob(node) ((node)==NULL)
 #define bitree_is_leaf(node) ((node)->left==NULL&&(node)->right==NULL)
 #define bitree_data(node) ((node)->data)
 #define bitree_left(node) ((node)->left)

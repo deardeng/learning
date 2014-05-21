@@ -2,7 +2,7 @@
 CC=gcc
 CPPFLAGS=-Wall -g
 BIN= main
-OBJS= ex-1.c list.c bitree.c
+OBJS= ex-1.c  bitree.c
 $(BIN):$(OBJS)
 	$(CC) $(CPPFLAGS) $^ -o $@
 %.o:%.c
