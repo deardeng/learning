@@ -12,13 +12,14 @@ int main(){
     while(cin >> currWord){
         if(currWord == preWord){
             ++currCnt;
+            }
             if(currCnt > maxCnt){
                 maxCnt = currCnt;
                 repWord = preWord;
             }
-        }
-        else
+        else{
             currCnt = 1;
+        }
         preWord = currWord;
     }
 
