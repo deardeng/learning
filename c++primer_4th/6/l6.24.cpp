@@ -2,6 +2,7 @@
 using namespace std;
 #include<bitset>
 #include<exception>
+#include<stdexcept>
 
 int main(){
     bitset<100> bs;
