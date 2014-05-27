@@ -7,9 +7,11 @@ int main(){
     keypad(stdscr,TRUE);
     noecho();
     mvaddch(y,x,'A');
+    curs_set(0);
     while(1){
         ch=getch();
-        mvaddch(y,x,' ');
+        clear();
+       //mvaddch(y,x,' ');
         switch(ch){
             case KEY_UP:
                 y--;

@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include<cstdlib>
 
 class F{
 	int n;
