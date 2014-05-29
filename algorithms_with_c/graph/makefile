@@ -1,6 +1,6 @@
 .PHONY:clean
 CC=gcc
-CPPFLAGS=-Wall
+CPPFLAGS=-unused-but-set-variable 
 BIN= main
 OBJS= ex-1.c list.c set.c graph.c
 $(BIN):$(OBJS)
