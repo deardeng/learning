@@ -49,7 +49,7 @@ public:
 			else 	if(d==t->data)return t;//找到了
 			else if(d<t->data)
 				return find(t->L,d);
-			else 
+			else
 				return find(t->R,d);
 	}
 	void travel(tree t)const{
