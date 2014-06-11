@@ -1,0 +1,59 @@
+ int student_id=-1;
+                   string studentname;
+                   int flag=1;
+                   while(flag){
+                       show_search_menu(who,select_system_num);
+                       switch(select_system_num){
+                           case 0:Usr_Infor_Show(student);
+                                  sleep(3);
+                                  break;
+                           case 1:cout << "input a student's name: ";
+                                  cin >> studentname;
+                                  search_usr_infor_by_name(student,studentname);
+                                  sleep(3);
+                                  break;
+                           case 2:cout << "input a student's id: ";
+                                  cin >> student_id;
+                                  search_usr_infor_by_id(student,student_id);
+                                  sleep(3);
+                                  break;
+                           case 3:flag=0;
+                                  break;
+                       }
+                   }
+g++ -Wall -g list.cpp main.cpp -o main
+/tmp/ccl9PDpz.o：在函数‘main’中：
+/home/dengxin/learning/sims/main.cpp:7：对‘List<int>::push_front(int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:8：对‘List<int>::push_front(int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:9：对‘List<int>::push_front(int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:10：对‘List<int>::insert(int const&, int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:11：对‘List<int>::insert(int const&, int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:12：对‘List<int>::insert(int const&, int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:13：对‘List<int>::insert(int const&, int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:14：对‘List<int>::push_back(int const&)’未定义的引用                                                     
+/home/dengxin/learning/sims/main.cpp:14：对‘List<int>::push_back(int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:14：对‘List<int>::travel() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:15：对‘List<int>::erase(int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:16：对‘List<int>::size() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:16：对‘List<int>::erase(int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:17：对‘List<int>::erase(int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:18：对‘List<int>::travel() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:19：对‘List<int>::push_back(int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:20：对‘List<int>::insert(int const&, int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:21：对‘List<int>::travel() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:22：对‘List<int>::remove(int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:23：对‘List<int>::travel() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:24：对‘List<int>::set(int, int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:25：对‘List<int>::set(int, int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:26：对‘List<int>::find(int const&) const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:26：对‘List<int>::set(int, int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:27：对‘List<int>::set(int, int const&)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:28：对‘List<int>::travel() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:29：对‘List<int>::size() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:29：对‘List<int>::back() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:30：对‘List<int>::erase(int)’未定义的引用
+/home/dengxin/learning/sims/main.cpp:31：对‘List<int>::size() const’未定义的引用
+/home/dengxin/learning/sims/main.cpp:32：对‘List<int>::~List()’未定义的引用
+/home/dengxin/learning/sims/main.cpp:32：对‘List<int>::~List()’未定义的引用
+collect2: 错误：ld 返回 1
+make: *** [main] 错误 1

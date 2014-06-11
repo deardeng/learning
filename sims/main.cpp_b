@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+#include "list.h"
+#include "sims.h"
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <cstdlib>
+#include "passwd.h"
+
+void Usr_Account_Show(const List<pUSR_ACCOUNT> &who){
+    who.travel_user();
+}
+
+void Usr_Infor_show(const List<pUSR_INFOR> &who){
+    who.travel_student();
+}
+
+int main()
+{
+    const char* config_file_name="Configure.txt";
+    List<pUSR_ACCOUNT> user;
+    List<pUSR_INFOR> student;
+    USR_ACCOUNT_NUM usr_account_num;
+    USR_INFOR_NUM usr_infor_num;
+    system_init(config_file_name,user,student,usr_account_num,usr_infor_num);
+    cout << "here:" << endl;
+    //cout << "the number account:" << usr_account_num << endl;
+    cout << "the number info:" << usr_infor_num << endl;
+    string username;
+    cin >> username;
+    cin.ignore();//must!
+    string password;
+    password=inputpasswd();
+    cout << endl;
+    //cout << role_confirm(user,username,password)<< endl;
+    int select_system_num=0;
+    int who=role_confirm(user,username,password);
+    show_system_menu(who,select_system_num);
+    cout << select_system_num << endl;
+    int select_search_num=0;
+    show_search_menu(who,select_search_num);
+    cout << select_search_num<< endl;
+    int student_id;
+    cout << "input a student id:" << endl;
+    cin >> student_id;
+    search_usr_infor_by_id(student,student_id);
+    string studentname;
+    cout << "input a student student'name:" << endl;
+    cin >> studentname;
+    search_usr_infor_by_name(student,studentname);
+    int studentid;
+    cout << "add a student,input a id: ";
+    cin >> studentid;
+    add_usr_infor(student,studentid);
+    cout << "update a student information , input his id:";
+    cin >> studentid;
+    update_usr_infor(student,studentid);
+    Usr_Infor_show(student);
+    cout << "delete a student information , input his id:";
+    Usr_Infor_show(student);
+    cin >> studentid;
+    delete_usr_infor(student,studentid);
+    string rolename;
+    cout << "search a user:" << endl;
+    cin >> rolename;
+    search_usr_account(user,rolename);
+    add_usr_account(user);
+    cout << "======================================" << endl;
+    string userr;
+    cout << "update a user information." << endl;
+    cin >> userr;
+    update_usr_account(user,userr);
+    cout << "======================================" << endl;
+    Usr_Account_Show(user);
+    cout << "delete a user information." << endl;
+    cin >> userr;
+    delete_usr_account(user,userr);
+    cout << "======================================" << endl;
+    Usr_Account_Show(user);
+    Usr_Infor_show(student);
+    save_data_to_file(config_file_name,user,student);
+    cout << "======================================" << endl;
+}
