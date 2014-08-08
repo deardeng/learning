@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+#include "list.h"
+
+#define USR_NAME_LEN 20
+#define USR_PWD_LEN 100
+
+typedef bool USR_ROLE;
+typedef int USR_ACCOUNT_NUM;
+typedef int USR_INFOR_NUM;
+typedef int SEARCH_ID;
+
+typedef struct usr_account_tag{
+    char usr_name[USR_NAME_LEN];//登陆账户用户名
+    char usr_pwd[USR_PWD_LEN];//密码
+    USR_ROLE usr_role;//账户角色：    true：管理员 false：普通账户
+    //struct usr_account_tag *pNext_Usr_Account;//指向下一个账户节点
+}USR_ACCOUNT,*pUSR_ACCOUNT;
+
+typedef struct usr_infor_tag{
+    int usr_id;//学生id
+    char usr_name[USR_NAME_LEN];//学生姓名
+    int usr_course_id;//课程id
+    double usr_course_score;//课程分数
+    //struct usr_infor_tag *pNext_Usr_Infor;//指向下一个学生节点
+}USR_INFOR,*pUSR_INFOR;
+
+void Usr_Account_Show(List<pUSR_ACCOUNT> &who){
+    who.travel_user();
+}
+
+void Usr_Infor_show(List<pUSR_INFOR> &who){
+    who.travel_student();
+}
+
+int main()
+{
+    List<pUSR_ACCOUNT> user;
+    USR_ACCOUNT root={"dengxin","dx",true};
+    USR_ACCOUNT user1={"dengxin","dx",true};
+    USR_ACCOUNT user2={"dengxin","dx",true};
+    user.push_back(&root);
+    user.push_back(&user1);
+    user.push_back(&user2);
+    Usr_Account_Show(user);
+    List<pUSR_INFOR> student;
+    USR_INFOR a={1,"dx",1,99};
+    USR_INFOR b={1,"dxx",1,98};
+    USR_INFOR c={1,"dxxx",1,97};
+    student.push_back(&a);
+    student.push_back(&b);
+    student.push_back(&c);
+    Usr_Infor_show(student);
+    //List<int*> l;
+    //int a=1,b=2,c=3,d=4,e=5,f=6,g=7,h=8,i=9,j=10,k=11,m=12,n=13;
+    //l.push_back(&a);
+    //l.push_back(&b);
+    //l.push_back(&c);
+    //l.push_back(&d);
+    //l.insert(&e,2);//20 8 9 5
+    //l.insert(&f,100);//6 20 8 9 5
+    //l.insert(&g,-10);//7 6 20 8 9 5
+    //l.insert(&h,2);//7 6 1 20 8 9 5
+    //l.push_back(&i).push_back(&j).travel();
+    //l.erase(0);//x7: 6 1 20 8 9 10 15
+    //l.erase(l.size()-1);//x15: 6 1 20 8 9 10
+    //l.erase(2);//x20: 6 1 8 9 10
+    //l.travel();
+    //l.push_back(&f);//6 1 8 9 10 6
+    //l.insert(&f,3);//6 1 8 6 9 5 10 6
+    //l.travel();
+    //l.remove(&f);//1 8 9 5 10
+    //l.travel();
+    //l.set(0,&j);
+    //l.set(4,&k);
+    //l.set(l.find(&i),&m);
+    //l.set(1,&n);
+    //l.travel();
+    //cout << l.front() << "..." << l.back() <<',' << l.size() << "个" <<  endl;
+    //while(!l.empty())l.erase(0);
+    //cout <<"size:" << l.size() << endl;
+    //return 0;
+}

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator", "Calculator\Calculator.vcproj", "{A93FF8B2-1352-477D-B150-A278CC953DE5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorTest", "CalculatorTest\CalculatorTest.vcproj", "{065C089D-2523-4D2A-873A-FCA8E6F6C999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A93FF8B2-1352-477D-B150-A278CC953DE5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A93FF8B2-1352-477D-B150-A278CC953DE5}.Debug|Win32.Build.0 = Debug|Win32
+		{A93FF8B2-1352-477D-B150-A278CC953DE5}.Release|Win32.ActiveCfg = Release|Win32
+		{A93FF8B2-1352-477D-B150-A278CC953DE5}.Release|Win32.Build.0 = Release|Win32
+		{065C089D-2523-4D2A-873A-FCA8E6F6C999}.Debug|Win32.ActiveCfg = Debug|Win32
+		{065C089D-2523-4D2A-873A-FCA8E6F6C999}.Debug|Win32.Build.0 = Debug|Win32
+		{065C089D-2523-4D2A-873A-FCA8E6F6C999}.Release|Win32.ActiveCfg = Release|Win32
+		{065C089D-2523-4D2A-873A-FCA8E6F6C999}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
