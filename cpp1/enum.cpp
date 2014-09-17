@@ -18,4 +18,3 @@ int main()
 	Color clr=BLUE;
 	//clr = VC;//Course --> Color
 }
-

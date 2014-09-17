@@ -25,12 +25,12 @@ istream& get(istream& in){
     return in;
 }
 
-int main(){
-    ifstream in("1.txt");
-    //string line;
-    //cout << "Enter a line of text:" << endl;
-    //getline(cin,line);
-    //istringstream isstr(line);
-    //get(isstr);
-    get(in);
-}
+//int main(){
+//    ifstream in("1.txt");
+//    //string line;
+//    //cout << "Enter a line of text:" << endl;
+//    //getline(cin,line);
+//    //istringstream isstr(line);
+//    //get(isstr);
+//    get(in);
+//}
