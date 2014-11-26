@@ -73,7 +73,7 @@ void ReceiptForm::OnKeyEvent(JEvent* e)
 			dynamic_cast<MainMenuForm*>(form)->GetItem()[4]->SetCurrent();
 			break;
 		case RFT_CLOSE_ACCOUNT:
-			dynamic_cast<MainMenuForm*>(form)->GetItem()[5]->SetCurrent();
+			dynamic_cast<MainMenuForm*>(form)->GetItem()[7]->SetCurrent();
 			break;
 		}
 
