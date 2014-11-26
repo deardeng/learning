@@ -161,4 +161,52 @@ void WithdrawalForm::Submit()
 		editPass_->Show();
 		return;
 	}
+	try
+	{
+		BankSession bs;
+		bs.SetCmd(CMD_WITHDRAW);
+		bs.SetAttribute("account_id", editAccountId_->GetText());
+		bs.SetAttribute("pass", editPass_->GetText());
+		bs.SetAttribute("money", editPass_->GetText());
+
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(0 == bs.GetErrorCode())
+		{
+			Reset();
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			std::string msg = "取款成功" + bs.GetResponse("money");
+
+			ReceiptForm* form;
+			form = dynamic_cast<ReceiptForm*>(Singleton<FormManager>::Instance().Get("receiptForm"));
+			form->SetTitle("取款成功");
+
+			form->SetItemText("交易日期", bs.GetResponse("trans_date"));
+			form->SetItemText("户    号", bs.GetResponse("name"));
+			form->SetItemText("账    号", bs.GetAttribute("account_id"));
+			form->SetItemText("交易金额", bs.GetAttribute("money"));
+			form->SetItemText("摘    要", "取款");
+			form->SetItemText("余    额", bs.GetResponse("balance"));
+			form->Show();	
+		}
+		else
+		{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			JMessageBox::Show("-ERROR-", bs.GetErrorMsg(), v);
+			ClearWindow();
+			Show();
+			return;
+		}
+	}
+	catch(Exception& e)
+	{
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+		int result = JMessageBox::Show("-ERROR-", e.what(), v);
+		ClearWindow();
+		Show();
+
+		return;
+	}
 }

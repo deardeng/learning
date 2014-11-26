@@ -2,9 +2,10 @@
 #include "FormManager.h"
 #include "MainMenuForm.h"
 #include "Validator.h"
-
+#include "../BankSession.h"
 #include "../JFC/JMessageBox.h"
-
+#include "../TransactionManager.h"
+#include "../../Public/Exception.h"
 using namespace UI;
 
 ChangePasswordForm::ChangePasswordForm()
@@ -173,4 +174,45 @@ void ChangePasswordForm::Submit()
 	}
 
 	// 以下为实际的修改密码操作
+	try
+	{
+		BankSession bs;
+		bs.SetCmd(CMD_CHANGE_PASSWORD);
+		bs.SetAttribute("account_id", editAccountId_->GetText());
+		bs.SetAttribute("pass", editPass_->GetText());
+		bs.SetAttribute("newpass", editNewPass_->GetText());
+		
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(bs.GetErrorCode() == 0)
+		{
+			Reset();
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			std::string msg = "修改密码成功";
+			JMessageBox::Show("-MESSAGE-", msg, v);
+
+			JForm* form = Singleton<FormManager>::Instance().Get("MainMenuForm");
+			dynamic_cast<MainMenuForm*>(form)->GetItem()[5]->SetCurrent();
+			form->ClearWindow();
+			form->Show();
+		}
+		else
+		{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			JMessageBox::Show("-ERROR-", bs.GetErrorMsg(), v);
+			ClearWindow();
+			Show();
+			return;
+		}
+	}
+	catch(Exception& e)
+	{
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+		int result = JMessageBox::Show("-ERROR-", e.what(), v);
+		ClearWindow();
+		Show();
+		return;
+	}
 }

@@ -10,7 +10,7 @@
 #include "ChangePasswordForm.h"
 #include "DetailStatementForm.h"
 #include "CloseAccountForm.h"
-
+#include "ReceiptForm.h"
 #include "QueryDayBillForm.h"
 #include "QueryHistoryBillForm.h"
 #include "QueryAccountHistoryBillForm.h"
@@ -33,6 +33,64 @@ FormManager::FormManager()
 	forms_["QueryDayBillForm"] = new QueryDayBillForm(13, 5, 54, 13);
 	forms_["QueryHistoryBillForm"] = new QueryHistoryBillForm(13, 5, 54, 13);
 	forms_["QueryAccountHistoryBillForm"] = new QueryAccountHistoryBillForm(13, 5, 54, 15);
+
+	char* items[] = 
+	{
+		"开户日期",
+		"户    名",
+		"账    号",
+		"金    额",
+	};
+	std::vector<std::string> v(items, items+4);
+
+	forms_["OpenAccountReceiptForm"] = new ReceiptForm(10, 6, 60, 13, v, "开户成功");
+	
+	char* items2[] = 
+	{
+		"交易日期",
+		"户    名",
+		"账    号",
+		"交易金额",
+		"摘    要",
+		"余    额",
+	};
+	std::vector<std::string> v2(items2, items2+6);
+	forms_["ReceiptForm"] = new ReceiptForm(10, 4, 60, 17, v2);
+
+	char* items3[] = 
+	{
+		"交易日期",
+		"户    名",
+		"账    号",
+		"对方账号",
+		"交易金额",
+		"摘    要",
+		"余    额",
+	};
+	std::vector<std::string> v3(items3, items3+7);
+	forms_["TransferReceiptForm"] = new ReceiptForm(10, 3, 60, 19, v3, "转账成功");
+	
+	char* items4[] = 
+	{
+		"交易日期",
+		"户    名",
+		"账    号",
+		"余    额",
+	};
+	std::vector<std::string> v4(items4, items4+4);
+	forms_["BalanceInquiryReceiptForm"] = new ReceiptForm(10, 6, 60, 13, v4, "余额查询成功");
+
+	char* items5[] = 
+	{
+		"销户日期",
+		"户    名",
+		"账    号",
+		"余    额",
+		"利    息",
+		"总    计",
+	};
+	std::vector<std::string> v5(items5, items5+6);
+	forms_["CloseAccountReceiptForm"] = new ReceiptForm(10, 4, 60, 17, v5);
 }
 
 FormManager::~FormManager()

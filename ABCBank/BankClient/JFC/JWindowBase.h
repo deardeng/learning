@@ -1,6 +1,7 @@
 #ifndef _JWINDOWBASE_H_
 #define _JWINDOWBASE_H_
 #include <string>
+#define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 namespace JFC{
 

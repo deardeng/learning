@@ -3,9 +3,11 @@
 #include "FormManager.h"
 #include "MainMenuForm.h"
 #include "Validator.h"
-
+#include "../BankSession.h"
+#include "../TransactionManager.h"
+#include "../../Public/Exception.h"
 #include "../JFC/JMessageBox.h"
-
+#include "ReceiptForm.h"
 using namespace UI;
 
 OpenAccountForm::OpenAccountForm()
@@ -206,4 +208,50 @@ void OpenAccountForm::Submit()
 	}
 
 	// 以下为实际的开户操作
+
+	try
+	{
+		BankSession bs;
+		bs.SetCmd(CMD_OPEN_ACCOUNT);
+		bs.SetAttribute("name", editName_->GetText());
+		bs.SetAttribute("pass", editPass_->GetText());
+		bs.SetAttribute("id", editId_->GetText());
+		bs.SetAttribute("money", editMoney_->GetText());
+
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(bs.GetErrorCode() == 0)
+		{
+			Reset();
+
+			ReceiptForm* form;
+			form = dynamic_cast<ReceiptForm*>(Singleton<FormManager>::Instance().Get("OpenAccountReceiptForm"));
+			form->SetReceiptFormType(ReceiptForm::RFT_OPEN_ACCOUNT);
+			form->SetItemText("开户日期", bs.GetResponse("open_date"));
+			form->SetItemText("户    名", bs.GetAttribute("name"));
+			form->SetItemText("账    号", bs.GetResponse("account_id"));
+			form->SetItemText("金    额", bs.GetAttribute("money"));
+			
+			form->Show();
+		}
+		else
+		{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			JMessageBox::Show("-ERROR-", bs.GetErrorMsg(), v);
+			ClearWindow();
+			Show();
+			return;
+		}
+	}
+	catch(Exception& e)
+	{
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+
+		JMessageBox::Show("-ERROR-", e.what(), v);
+		ClearWindow();
+		Show();
+		
+		return;
+	}
 }

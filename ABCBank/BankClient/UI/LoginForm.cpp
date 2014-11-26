@@ -2,6 +2,11 @@
 #include "Validator.h"
 #include "../JFC/JMessageBox.h"
 #include "FormManager.h"
+#include "../../Public/Socket.h"
+#include "../BankSession.h"
+#include "../TransactionManager.h"
+#include "../../Public/Exception.h"
+using namespace PUBLIC;
 //using namespace JFC;
 using namespace UI;
 LoginForm::LoginForm(SHORT x,SHORT y,SHORT width,SHORT height,
@@ -98,12 +103,62 @@ void LoginForm::Login(){
 		return;
 	}
 	// TODO:以下为实际的登录操作
+	//Socket sock;
+	//sock.Create();
+	//sock.Connect("127.0.0.1",8888);
+	//std::string str;
+	//str.append(editUser_->GetText());
+	//str.append("#");
+	//str.append(editPass_->GetText());
+	//sock.Send(str.c_str(),str.length());
 
-	Reset();
+	//char buffer[1024] = {0};
+	//sock.Recv(buffer, sizeof(buffer));
+	//std::vector<std::string> v;
+	//v.push_back(" YES ");
 
-	JForm* form = Singleton<FormManager>::Instance().Get("MainMenuForm");
-	form->ClearWindow();
-	form->Show();
+
+	//JMessageBox::Show("-MESSAGE-",buffer,v);
+
+
+	//Reset();
+
+	//JForm* form = Singleton<FormManager>::Instance().Get("MainMenuForm");
+	//form->ClearWindow();
+	//form->Show();
+
+	try{
+		BankSession bs;
+		bs.SetCmd(CMD_LOGIN);
+		bs.SetAttribute("name",editUser_->GetText());
+		bs.SetAttribute("pass",editPass_->GetText());
+
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(bs.GetErrorCode() == 0){
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			JMessageBox::Show("-MESSAGE-","登录成功",v);
+			Reset();
+			JForm* form = Singleton<FormManager>::Instance().Get("MainMenuForm");
+			form->ClearWindow();
+			form->Show();
+		}
+		else{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			JMessageBox::Show("-ERROR-",bs.GetErrorMsg(),v);
+			ClearWindow();
+			Show();
+		}
+	}
+	catch(Exception& e){
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+		JMessageBox::Show("-ERROR-",e.what(),v);
+		ClearWindow();
+		Show();
+	}
+
 }
 void LoginForm::Exit(){
 	std::vector<std::string> v;
