@@ -55,7 +55,8 @@ JMessageBoxImpl::JMessageBoxImpl(SHORT x,SHORT y,SHORT w,SHORT h,
 									 }
 }
 
-void JMessageBoxImpl::Draw(){
+void JMessageBoxImpl::Draw()
+{
 	ClearWindow();
 	SetTextColor(FCOLOR_YELLO);
 	SetBkColor(BCOLOR_MAGENTA);
