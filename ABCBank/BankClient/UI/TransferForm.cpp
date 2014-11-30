@@ -1,11 +1,12 @@
 #include "TransferForm.h"
-
+#include "../BankSession.h"
 #include "FormManager.h"
 #include "MainMenuForm.h"
 #include "Validator.h"
-
+#include "../TransactionManager.h"
 #include "../JFC/JMessageBox.h"
-
+#include "ReceiptForm.h"
+#include "../../Public/Exception.h"
 using namespace UI;
 
 TransferForm::TransferForm()
@@ -193,4 +194,55 @@ void TransferForm::Submit()
 	}
 
 	// 以下为实际的转帐操作
+	try
+	{
+		BankSession bs;
+		bs.SetCmd(CMD_TRANSFER);
+		bs.SetAttribute("account_id", editAccountId_->GetText());
+		bs.SetAttribute("pass", editPass_->GetText());
+		bs.SetAttribute("money", editMoney_->GetText());
+		bs.SetAttribute("other_account_id", editOtherAccountId_->GetText());
+		
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(bs.GetErrorCode() == 0)
+		{
+			Reset();
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			std::string msg = "转账成功" + bs.GetResponse("account_id");
+
+			ReceiptForm* form;
+			form = dynamic_cast<ReceiptForm*>(Singleton<FormManager>::Instance().Get("TransferReceiptForm"));
+			form->SetReceiptFormType(ReceiptForm::RFT_TRANSFER);
+			form->SetTitle("转账成功");
+			form->SetItemText("交易日期", bs.GetResponse("trans_date"));
+			form->SetItemText("户    名", bs.GetResponse("name"));
+			form->SetItemText("账    号", bs.GetAttribute("account_id"));
+			form->SetItemText("对方账号", bs.GetAttribute("other_account_id"));
+			form->SetItemText("交易金额", bs.GetAttribute("money"));
+			form->SetItemText("摘    要", "转账");
+			form->SetItemText("余    额", bs.GetResponse("balance"));
+			form->Show();
+		}
+		else
+		{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+
+			JMessageBox::Show("-ERROR-", bs.GetErrorMsg(), v);
+			ClearWindow();
+			Show();
+			return;
+		}
+	}
+	catch(Exception& e)
+	{
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+		int result = JMessageBox::Show("-ERROR", e.what(), v);
+		ClearWindow();
+		Show();
+
+		return;
+	}
 }

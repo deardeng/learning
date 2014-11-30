@@ -295,8 +295,8 @@ int BankService::Transfer(Account& account, const string& otherAccountId){
 		if(rs.GetRows() < 1)
 			return 3;
 
-		double banlance = Convert::StringToDouble(rs.GetItem(0, "balance"));
-		if(account.balance > banlance)
+		double balance = Convert::StringToDouble(rs.GetItem(0, "balance"));
+		if(account.balance > balance)
 			return 4;
 		ss.clear();
 		ss.str("");
@@ -308,7 +308,7 @@ int BankService::Transfer(Account& account, const string& otherAccountId){
 		if(rs.GetRows() < 1)
 			return 5;
 
-		double banlance2 = Convert::StringToDouble(rs.GetItem(0, "balance"));
+		double balance2 = Convert::StringToDouble(rs.GetItem(0, "balance"));
 		
 		ss.clear();
 		ss.str("");
@@ -336,7 +336,7 @@ int BankService::Transfer(Account& account, const string& otherAccountId){
 			other_account_id << 
 			", " << 5 << ", " <<
 			setprecision(2) << setiosflags(ios::fixed) << account.balance << ", " <<
-			setprecision(2) << setiosflags(ios::fixed) << banlance-account.balance <<
+			setprecision(2) << setiosflags(ios::fixed) << balance-account.balance <<
 			", now());";
 
 		ret = db.ExecSQL(ss.str().c_str());
@@ -358,11 +358,15 @@ int BankService::Transfer(Account& account, const string& otherAccountId){
 			other_account_id << ", " <<
 			account.account_id << ", " << 4 << ", " <<
 			setprecision(2) << setiosflags(ios::fixed) << account.balance << ", " <<
-			setprecision(2) << setiosflags(ios::fixed) << banlance2 + account.balance <<
+			setprecision(2) << setiosflags(ios::fixed) << balance2 + account.balance <<
 			", now());";
 
 		ret = db.ExecSQL(ss.str().c_str());
 		db.Commit();
+
+		account.balance = balance - account.balance;
+		account.name = rs.GetItem(0, "name");
+		account.op_date = rs.GetItem(0, "trans_date");
 	}
 	catch(Exception& e)
 	{

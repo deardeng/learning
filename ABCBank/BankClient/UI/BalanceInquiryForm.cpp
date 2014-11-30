@@ -1,11 +1,13 @@
 #include "BalanceInquiryForm.h"
-
+#include "../BankSession.h"
 #include "FormManager.h"
 #include "MainMenuForm.h"
 #include "Validator.h"
-
+#include "../TransactionManager.h"
 #include "../JFC/JMessageBox.h"
-
+#include "ReceiptForm.h"
+#include "../../Public/Exception.h"
+using namespace PUBLIC;
 using namespace UI;
 
 BalanceInquiryForm::BalanceInquiryForm()
@@ -26,7 +28,7 @@ BalanceInquiryForm::BalanceInquiryForm(SHORT x,SHORT y,SHORT w, SHORT h,
 
 	lblPass_ = new JLable(8,8,17,1,"ACCOUNT PASSWORD:",this);
 	editPass_ = new JEdit(26,8,21,1,"",this,JEdit::EM_PASSWORD);
-	//lblPassTip_ = new JLable(50,8,11,1,"长度6-8位"，this);
+	lblPassTip_ = new JLable(50,8,11,1,"长度6-8位",this);
 
 	btnSubmit_ = new JButton(5,20,10,3,"SUBMIT",this);
 	btnReset_ = new JButton(50,20,10,3,"RESET",this);
@@ -122,4 +124,44 @@ void BalanceInquiryForm::Submit(){
 		return;
 	}
 	//...
+	try
+	{
+		BankSession bs;
+		bs.SetCmd(CMD_BALANCE_INQUIRY);
+		bs.SetAttribute("account_id", editAccountId_->GetText());
+		bs.SetAttribute("pass", editPass_->GetText());
+
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(bs.GetErrorCode() == 0)
+		{
+			Reset();
+			ReceiptForm* form;
+			form = dynamic_cast<ReceiptForm*>(Singleton<FormManager>::Instance().Get("BalanceInquiryReceiptForm"));
+			form->SetReceiptFormType(ReceiptForm::RFT_BALANCE_INQUIRY);
+			form->SetTitle("余额查询成功");
+			form->SetItemText("交易日期", bs.GetResponse("trans_date"));
+			form->SetItemText("户    名", bs.GetResponse("name"));
+			form->SetItemText("账    号", bs.GetAttribute("account_id"));
+			form->SetItemText("余    额", bs.GetResponse("balance"));
+			form->Show();
+		}
+		else
+		{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+			JMessageBox::Show("-ERROR-", bs.GetErrorMsg(), v);
+			ClearWindow();
+			Show();
+			return;
+		}
+	}
+	catch(Exception& e)
+	{
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+		JMessageBox::Show("-ERROR-", e.what(), v);
+		ClearWindow();
+		Show();
+		return;
+	}
 }
