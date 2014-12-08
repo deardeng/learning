@@ -423,13 +423,164 @@ int BankService::BalanceInquiry(Account& account){
 }
 
 int BankService::QueryDayBill(list<TransDetail>& result, int page, const string& date){
+	MysqlDB db;
+	Server& server = Singleton<Server>::Instance();
+
+	try
+	{
+		db.Open(server.GetDbServerIp().c_str(),
+			server.GetDbUser().c_str(),
+			server.GetDbPass().c_str(),
+			server.GetDbName().c_str(),
+			server.GetDbServerPort());
+		stringstream ss;
+		ss << "select count(*) as total from " << "(select * from trans where date_format(trans_date, '%Y-%m-%d')='"
+			<< date << "') as a, abstract b where a.abstract_id = b.abstract_id;";
+		MysqlRecordset rs = db.QuerySQL(ss.str().c_str());
+		int total = Convert::StringToDouble(rs.GetItem(0, "total"));
+
+		ss.clear();
+		ss.str("");
+		ss << "select a.account_id, a.other_account_id, b.name, a.money, a.balance, a.trans_date from " <<
+			"(select * from trans where date_format(trans_date, '%Y-%m-%d')='" <<
+			date <<
+			"') a, abstract b where a.abstract_id = b.abstract_id order by a.trans_date limit " << 
+			page*15 << ", 15;";
+		rs.Clear();
+		rs = db.QuerySQL(ss.str().c_str());
+		if(rs.GetRows() < 1)
+			return 6;
+
+		for(unsigned int i=0; i<rs.GetRows(); ++i)
+		{
+			TransDetail td;
+			td.account_id = rs.GetItem(i, "account_id");
+			td.other_account_id = rs.GetItem(i, "other_account_id");
+			td.abstract_name = rs.GetItem(i, "name");
+
+			td.money = Convert::StringToDouble(rs.GetItem(i, "money"));
+			td.balance = Convert::StringToDouble(rs.GetItem(i, "balance"));
+
+			td.trans_date = rs.GetItem(i, "trans_date");
+			td.total = total;
+
+			result.push_back(td);
+		}
+		
+	}
+	catch(Exception& e)
+	{
+		LOG_INFO << e.what();
+		return -1;
+	}
 	return 0;
 }
 
 int BankService::QueryHistoryBill(list<TransDetail>& result, int page, const string& begin, const string& end){
+	MysqlDB db;
+	Server& server = Singleton<Server>::Instance();
+	try
+	{
+		db.Open(server.GetDbServerIp().c_str(),
+			server.GetDbUser().c_str(),
+			server.GetDbPass().c_str(),
+			server.GetDbName().c_str(),
+			server.GetDbServerPort());
+
+		stringstream ss;
+		ss << "select count(*) as total from " << 
+			"(select * from trans where date_format(trans_date, '%Y-%m-%d') between '" << begin << "' and '" <<
+			end << "') a, abstract b where a.abstract_id = b.abstract_id;";
+		MysqlRecordset rs = db.QuerySQL(ss.str().c_str());
+
+		int total = Convert::StringToInt(rs.GetItem(0, "total"));
+
+		ss.clear();
+		ss.str("");
+		ss << "select a.account_id, a.other_account_id, b.name, a.money, a.balance, a.trans_date from " <<
+			"(select * from trans where date_format(trans_date, '%Y-%m-%d') between '" <<
+			begin << "' end '" << end << "') a, abstract b where a.abstract_id = b.abstract_id order by a.trans_date limit" <<
+			page*15 << ", 15;";
+		rs.Clear();
+		rs = db.QuerySQL(ss.str().c_str());
+		if(rs.GetRows() < 1)
+			return 6;
+
+		for(unsigned int i=0; i<rs.GetRows(); ++i)
+		{
+			TransDetail td;
+			td.account_id = rs.GetItem(i, "account_id");
+			td.other_account_id = rs.GetItem(i, "other_account_id");
+			td.abstract_name = rs.GetItem(i, "name");
+
+			td.money = Convert::StringToDouble(rs.GetItem(i, "money"));
+			td.balance = Convert::StringToDouble(rs.GetItem(i, "balance"));
+
+			td.trans_date = rs.GetItem(i, "trans_date");
+			td.total = total;
+
+			result.push_back(td);
+		}
+	}
+	catch(Exception& e)
+	{
+		LOG_INFO << e.what();
+		return -1;
+	}
 	return 0;
 }
 
 int BankService::QueryAccountHistoryBill(list<TransDetail>& result, int page, const string& accountId, const string& begin, const string& end){
+	MysqlDB db;
+	Server& server = Singleton<Server>::Instance();
+	try
+	{
+		db.Open(server.GetDbServerIp().c_str(),
+			server.GetDbUser().c_str(),
+			server.GetDbPass().c_str(),
+			server.GetDbName().c_str(),
+			server.GetDbServerPort());
+
+		stringstream ss;
+		ss << "select count(*) as total from " <<
+			"(select * from trans where account_id=" << 
+			accountId << "and date_format(trans_date, '%Y-%m-%d') between '" <<
+			begin << "' end '" << end << ") as a, abstract b where a.abstract_id = b.abstract_id;";
+		MysqlRecordset rs = db.QuerySQL(ss.str().c_str());
+
+		int total = Convert::StringToInt(rs.GetItem(0, "total"));
+
+		ss.clear();
+		ss.str("");
+		ss << "select a.account_id, a.other_account_id, b.name, a.money, a.balance, a.trans_date from "
+			<< "(select * from trans where account_id=" << accountId << " and date_format(trans_date, '%Y-%m-%d') between '" <<
+			begin << "' and '" << end << "') a, abstract b where a.abstract_id = b.abstract_id order by a.trans_date limit " <<
+			page*15 << ", 15;";
+
+		rs.Clear();
+		rs = db.QuerySQL(ss.str().c_str());
+		if(rs.GetRows() < 1)
+			return 6;
+
+		for(unsigned int i=0; i<rs.GetRows(); ++i)
+		{
+			TransDetail td;
+			td.account_id = rs.GetItem(i, "account_id");
+			td.other_account_id = rs.GetItem(i, "other_account_id");
+			td.abstract_name = rs.GetItem(i, "name");
+
+			td.money = Convert::StringToDouble(rs.GetItem(i, "money"));
+			td.balance = Convert::StringToDouble(rs.GetItem(i, "balance"));
+			td.trans_date = rs.GetItem(i, "trans_date");
+			td.total = total;
+
+			result.push_back(td);
+		}
+	}
+	catch(Exception& e)
+	{
+		LOG_INFO << e.what();
+		return -1;
+	}
 	return 0;
 }
