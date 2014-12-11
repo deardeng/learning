@@ -37,5 +37,6 @@ int main()
 	catch(my_exception& e)
 	{
 		cout << *get_error_info<err_str>(e) << endl;
+
 	}
 }
