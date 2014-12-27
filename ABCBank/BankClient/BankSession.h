@@ -6,8 +6,10 @@
 #include "../Public/Socket.h"
 #include "../Public/MD5.h"
 #include "../Public/Idea.h"
+#include "TransDetail.h"
 #include <memory>
 #include <map>
+#include <list>
 using namespace PUBLIC;
 
 
@@ -84,6 +86,14 @@ public:
 	}
 	void SetResponse(const string& k, const string& v);
 	const string& GetResponse(const string& k);
+	void AddDetail(const TransDetail& detail)
+	{
+		details_.push_back(detail);
+	}
+	list<TransDetail>& GetDetails()
+	{
+		return details_;
+	}
 private:
 	std::auto_ptr<Socket> socket_;
 	char buffer_[2048];
@@ -94,6 +104,7 @@ private:
 	map<string,string>response_;
 	int16 errorCode_;
 	string errorMsg_;
+	list<TransDetail> details_;
 };
 
 

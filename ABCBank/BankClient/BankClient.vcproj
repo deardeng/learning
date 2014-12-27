@@ -205,6 +205,10 @@
 				RelativePath=".\TransactionManager.h"
 				>
 			</File>
+			<File
+				RelativePath=".\TransDetail.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="资源文件"
@@ -397,6 +401,14 @@
 			</File>
 			<File
 				RelativePath=".\UI\ReceiptForm.h"
+				>
+			</File>
+			<File
+				RelativePath=".\UI\ReportForm.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UI\ReportForm.h"
 				>
 			</File>
 			<File

@@ -1,9 +1,12 @@
 #include "QueryHistoryBillForm.h"
-
+#include "ReportForm.h"
 #include "FormManager.h"
 #include "DetailStatementForm.h"
 #include "Validator.h"
-
+#include "ReceiptForm.h"
+#include "../BankSession.h"
+#include "../TransactionManager.h"
+#include "../../Public/Exception.h"
 #include "../JFC/JMessageBox.h"
 
 using namespace UI;
@@ -118,6 +121,51 @@ void QueryHistoryBillForm::Query()
 	}
 
 	// 以下为实际的查询操作
+	try
+	{
+		BankSession bs;
+		bs.SetCmd(CMD_HISTORY_BILL);
+		bs.SetAttribute("begin_date", editBeginDate_->GetText());
+		bs.SetAttribute("end_date", editEndDate_->GetText());
+		bs.SetAttribute("page", "0");
+
+		Singleton<TransactionManager>::Instance().DoAction(bs);
+		if(bs.GetErrorCode() == 0)
+		{
+			ReportForm* form;
+			form = dynamic_cast<ReportForm*>(Singleton<FormManager>::Instance().Get("ReportForm"));
+			form->SetCmd(CMD_HISTORY_BILL);
+			list<TransDetail>& tds = bs.GetDetails();
+			list<TransDetail>::iterator it = tds.begin();
+			form->SetLines(it->total);
+			form->SetDetails(bs.GetDetails());
+			form->SetBeginDate(editBeginDate_->GetText());
+			form->SetEndDate(editEndDate_->GetText());
+
+			form->ClearWindow();
+			form->Show();
+		}
+		else
+		{
+			std::vector<std::string> v;
+			v.push_back(" YES ");
+
+			JMessageBox::Show("-ERROR-", bs.GetErrorMsg(), v);
+			ClearWindow();
+			Show();
+			return;
+		}
+	}
+	catch(Exception& e)
+	{
+		std::vector<std::string> v;
+		v.push_back(" YES ");
+		int result = JMessageBox::Show("-ERROR-", e.what(), v);
+		ClearWindow();
+		Show();
+
+		return;
+	}
 }
 
 void QueryHistoryBillForm::Reset()

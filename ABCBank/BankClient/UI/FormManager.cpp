@@ -14,7 +14,7 @@
 #include "QueryDayBillForm.h"
 #include "QueryHistoryBillForm.h"
 #include "QueryAccountHistoryBillForm.h"
-
+#include "ReportForm.h"
 
 using namespace UI;
 
@@ -33,7 +33,7 @@ FormManager::FormManager()
 	forms_["QueryDayBillForm"] = new QueryDayBillForm(13, 5, 54, 13);
 	forms_["QueryHistoryBillForm"] = new QueryHistoryBillForm(13, 5, 54, 13);
 	forms_["QueryAccountHistoryBillForm"] = new QueryAccountHistoryBillForm(13, 5, 54, 15);
-
+	forms_["ReportForm"] = new ReportForm(0, 0, 80, 25);
 	char* items[] = 
 	{
 		"开户日期",

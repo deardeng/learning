@@ -2,9 +2,157 @@
 
 #include "../../Public/Logging.h"
 #include "../../Public/JUtil.h"
-
+#include "../../Public/JOutStream.h"
+#include "../../Public/JinStream.h"
 using namespace PUBLIC;
 using namespace CMD;
 
 void QueryHistoryBill :: Execute(BankSession& session){
+	JOutStream jos;
+	uint16 cmd = CMD_HISTORY_BILL;
+	jos << cmd;
+	size_t lengthPos = jos.Length();
+	jos.Skip(2);
+
+	stringstream ss;
+	ss << session.GetAttribute("page");
+	uint32 page;
+	ss >> page;
+	jos << page;
+
+	jos.WriteBytes(session.GetAttribute("begin_date").c_str(), 10);
+	jos.WriteBytes(session.GetAttribute("end_date").c_str(), 10);
+
+	size_t tailPos = jos.Length();
+	jos.Reposition(lengthPos);
+	jos << (uint16)(tailPos + 8 - sizeof(RequestHead));
+
+	jos.Reposition(tailPos);
+	unsigned char hash[16];
+	MD5 md5;
+	md5.MD5Make(hash, (unsigned char const*)jos.Data(), jos.Length());
+	for(int i=0; i<8; ++i)
+	{
+		hash[i] = hash[i] ^ hash[i+8];
+		hash[i] = hash[i] ^ ((cmd >> (i%2)) & 0xff);
+	}
+	jos.WriteBytes(hash, 8);
+
+	session.Send(jos.Data(), jos.Length());
+	session.Recv();
+	JInStream jis((const char*)session.GetResponsePack(), session.GetResponsePack()->head.len+sizeof(ResponseHead));
+	jis.Skip(4);
+	uint16 cnt;
+	uint16 seq;
+	int16 error_code;
+	jis >> cnt >> seq >> error_code;
+
+	char error_msg[31];
+	jis.ReadBytes(error_msg, 30);
+	session.SetErrorCode(error_code);
+	session.SetErrorMsg(error_msg);
+
+	//if(error_code == 0)
+	//{
+	//	for(uint16 i=0; i<cnt; ++i)
+	//	{
+	//		jis.SetData((const char*)session.GetResponsePack(), 
+	//			session.GetResponsePack()->head.len + sizeof(ResponseHead));
+	//		jis.Skip(4);
+	//		uint16 cnt;
+	//		uint16 seq;
+	//		int16 error_code;
+	//		jis >> cnt >> seq >> error_code;
+
+	//		char error_msg[31];
+	//		jis.ReadBytes(error_msg, 30);
+
+	//		char trans_date[20] = {0};
+	//		char account_id[7] = {0};
+	//		char other_account_id[7] = {0};
+	//		string money;
+	//		string abstract_name;
+	//		string balance;
+	//		uint32 total;
+	//		jis.ReadBytes(trans_date, 19);
+	//		jis.ReadBytes(account_id, 6);
+	//		jis.ReadBytes(other_account_id, 6);
+	//		jis >> money >> abstract_name >> balance >> total;
+
+	//		TransDetail td;
+	//		td.trans_date = trans_date;
+	//		td.account_id = account_id;
+	//		td.other_account_id = other_account_id;
+	//		td.abstract_name = abstract_name;
+
+	//		ss.clear();
+	//		ss.str("");
+	//		ss << money;
+	//		ss >> td.money;
+	//		ss.clear();
+	//		ss.str("");
+	//		ss << balance;
+	//		ss >> td.balance;
+
+	//		td.total = total;
+
+	//		session.AddDetail(td);
+	//		if(seq == cnt-1)
+	//			return;
+	//		session.Recv();
+	//	}
+	//}
+
+
+	uint16 i=0;
+
+	while(!error_code && i<cnt)
+	{
+
+		jis.SetData((const char*)session.GetResponsePack(), 
+			session.GetResponsePack()->head.len + sizeof(ResponseHead));
+		jis.Skip(4);
+		uint16 cnt;
+		uint16 seq;
+		int16 error_code;
+		jis >> cnt >> seq >> error_code;
+
+		char error_msg[31];
+		jis.ReadBytes(error_msg, 30);
+
+		char trans_date[20] = {0};
+		char account_id[7] = {0};
+		char other_account_id[7] = {0};
+		string money;
+		string abstract_name;
+		string balance;
+		uint32 total;
+		jis.ReadBytes(trans_date, 19);
+		jis.ReadBytes(account_id, 6);
+		jis.ReadBytes(other_account_id, 6);
+		jis >> money >> abstract_name >> balance >> total;
+
+		TransDetail td;
+		td.trans_date = trans_date;
+		td.account_id = account_id;
+		td.other_account_id = other_account_id;
+		td.abstract_name = abstract_name;
+
+		ss.clear();
+		ss.str("");
+		ss << money;
+		ss >> td.money;
+		ss.clear();
+		ss.str("");
+		ss << balance;
+		ss >> td.balance;
+
+		td.total = total;
+
+		session.AddDetail(td);
+		if(seq == cnt-1)
+			return;
+		session.Recv();
+		++i;
+	}
 }

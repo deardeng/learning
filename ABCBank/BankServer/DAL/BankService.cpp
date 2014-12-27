@@ -86,7 +86,81 @@ int BankService::OpenAccount(Account& account){
 	return 0;
 }
 
-int BankService::CloseAccount(Account& account, double& interest){
+int BankService::CloseAccount(Account& account, double& interest)
+{
+	MysqlDB db;
+	Server& server = Singleton<Server>::Instance();
+
+	try
+	{
+		db.Open(server.GetDbServerIp().c_str(),
+			server.GetDbUser().c_str(),
+			server.GetDbPass().c_str(),
+			server.GetDbName().c_str(),
+			server.GetDbServerPort());
+
+		db.StartTransaction();
+		stringstream ss;
+		ss << "select balance from bank_account where account_id=" << account.account_id << " and flag=0;";
+		MysqlRecordset rs = db.QuerySQL(ss.str().c_str());
+		if(rs.GetRows() < 1)
+			return 2;
+		//LOG_INFO << ss.str();
+		ss.clear();
+		ss.str("");
+		ss << "select balance from bank_account where account_id="
+			<< account.account_id << " and pass=" << account.pass << " for update;";
+		//LOG_INFO << ss.str();
+		rs.Clear();
+		rs = db.QuerySQL(ss.str().c_str());
+		if(rs.GetRows() < 1)
+			return 3;
+
+		account.balance = Convert::StringToDouble(rs.GetItem(0, "balance"));
+
+		ss.clear();
+		ss.str("");
+		ss << "select sum(yy.days*yy.balance)*" << server.GetInteretRate() << "/360 interest from(" <<
+			"select trans_id, balance, trans_date, next_date, " <<
+			"datediff(if(next_date, next_date, now()), trans_date) days from (" <<
+			"select trans_id, balance, trans_date, (" <<
+			"select min(trans_date) from (" <<
+			"select * from trans where trans_id in (" <<
+			"select max(trans_id) from trans where account_id=" << account.account_id <<
+			" group by date_format(trans_date, '%Y-%m-%d')))" <<
+			" b where b.trans_date > a.trans_date) next_date from (" <<
+			"select * from trans where trans_id in " <<
+			"(select max(trans_id) from trans where account_id =" << account.account_id <<
+			" group by date_format(trans_date, '%Y-%m-%d'))) a) xx) yy";
+
+		//LOG_INFO << ss.str();
+		rs.Clear();
+		rs = db.QuerySQL(ss.str().c_str());
+		interest = Convert::StringToDouble(rs.GetItem(0, "interest"));
+
+		ss.clear();
+		ss.str("");
+		ss << "update bank_account set flag=1 where account_id=" <<
+			account.account_id << ";";
+		//LOG_INFO << ss.str();
+		db.ExecSQL(ss.str().c_str());
+
+		db.Commit();
+
+		ss.clear();
+		ss.str("");
+		ss << "select name, now() close_date from bank_account " <<
+			"where account_id=" << account.account_id << ";";
+		rs.Clear();
+		rs = db.QuerySQL(ss.str().c_str());
+		account.name = rs.GetItem(0, "name");
+		account.op_date = rs.GetItem(0, "close_date");
+	}
+	catch(Exception& e)
+	{
+		LOG_INFO << e.what();
+		return -1;
+	}
 	return 0;
 }
 
@@ -491,6 +565,7 @@ int BankService::QueryHistoryBill(list<TransDetail>& result, int page, const str
 		ss << "select count(*) as total from " << 
 			"(select * from trans where date_format(trans_date, '%Y-%m-%d') between '" << begin << "' and '" <<
 			end << "') a, abstract b where a.abstract_id = b.abstract_id;";
+		//LOG_INFO << ss.str();
 		MysqlRecordset rs = db.QuerySQL(ss.str().c_str());
 
 		int total = Convert::StringToInt(rs.GetItem(0, "total"));
@@ -499,7 +574,7 @@ int BankService::QueryHistoryBill(list<TransDetail>& result, int page, const str
 		ss.str("");
 		ss << "select a.account_id, a.other_account_id, b.name, a.money, a.balance, a.trans_date from " <<
 			"(select * from trans where date_format(trans_date, '%Y-%m-%d') between '" <<
-			begin << "' end '" << end << "') a, abstract b where a.abstract_id = b.abstract_id order by a.trans_date limit" <<
+			begin << "' and '" << end << "') a, abstract b where a.abstract_id = b.abstract_id order by a.trans_date limit " <<
 			page*15 << ", 15;";
 		rs.Clear();
 		rs = db.QuerySQL(ss.str().c_str());
@@ -542,10 +617,12 @@ int BankService::QueryAccountHistoryBill(list<TransDetail>& result, int page, co
 			server.GetDbServerPort());
 
 		stringstream ss;
-		ss << "select count(*) as total from " <<
-			"(select * from trans where account_id=" << 
-			accountId << "and date_format(trans_date, '%Y-%m-%d') between '" <<
-			begin << "' end '" << end << ") as a, abstract b where a.abstract_id = b.abstract_id;";
+		ss<<"select count(*) as total from "<<	
+		"(select * from trans where account_id=" << 
+		accountId << " and date_format(trans_date, '%Y-%m-%d') between '" <<
+		begin << "' and '" << end << " ') as a, abstract b where a.abstract_id = b.abstract_id;";
+
+		//LOG_INFO << ss.str();
 		MysqlRecordset rs = db.QuerySQL(ss.str().c_str());
 
 		int total = Convert::StringToInt(rs.GetItem(0, "total"));
