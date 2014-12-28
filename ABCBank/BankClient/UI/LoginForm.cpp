@@ -6,27 +6,29 @@
 #include "../BankSession.h"
 #include "../TransactionManager.h"
 #include "../../Public/Exception.h"
+#include "../Client.h"
 using namespace PUBLIC;
 //using namespace JFC;
 using namespace UI;
 LoginForm::LoginForm(SHORT x,SHORT y,SHORT width,SHORT height,
 					 JWindow* parent)
-					 :JForm(x,y,width,height,parent){
+					 :JForm(x,y,width,height,parent)
+{
 
 
-						 lblUser_ = new JLable(16,8,9,1,"USERNAME:",this);
-						 editUser_ = new JEdit(26,8,21,1,"",this);
-						 lblUserTip_ = new JLable(50,8,22,1,"长度3-10位，字母或数字",this);
+	lblUser_ = new JLable(16,8,9,1,"USERNAME:",this);
+	editUser_ = new JEdit(26,8,21,1,"",this);
+	lblUserTip_ = new JLable(50,8,22,1,"长度3-10位，字母或数字",this);
 
-						 lblPass_ = new JLable(16,12,9,1,"PASSWORD:",this);
-						 editPass_ = new JEdit(26,12,21,1,"",this,JEdit::EM_PASSWORD);
-						 lblPassTip_ = new JLable(50,12,9,1,"长度6-8位",this);
+	lblPass_ = new JLable(16,12,9,1,"PASSWORD:",this);
+	editPass_ = new JEdit(26,12,21,1,"",this,JEdit::EM_PASSWORD);
+	lblPassTip_ = new JLable(50,12,9,1,"长度6-8位",this);
 
-						 btnLogin_ = new JButton(22,17,11,3,"LOGIN",this);
-						 btnExit_ = new JButton(48,17,10,3,"EXIT",this);
+	btnLogin_ = new JButton(22,17,11,3,"LOGIN",this);
+	btnExit_ = new JButton(48,17,10,3,"EXIT",this);
 
-						 editUser_->SetValidator(ValidateName);
-						 editPass_->SetValidator(ValidatePass);
+	editUser_->SetValidator(ValidateName);
+	editPass_->SetValidator(ValidatePass);
 }
 LoginForm::~LoginForm(){
 	delete lblUser_;
@@ -128,13 +130,14 @@ void LoginForm::Login(){
 	//form->Show();
 
 	try{
-		BankSession bs;
-		bs.SetCmd(CMD_LOGIN);
-		bs.SetAttribute("name",editUser_->GetText());
-		bs.SetAttribute("pass",editPass_->GetText());
+		BankSession* bs = Singleton<Client>::Instance().GetBankSession();
+		bs->Clear();
+		bs->SetCmd(CMD_LOGIN);
+		bs->SetAttribute("name",editUser_->GetText());
+		bs->SetAttribute("pass",editPass_->GetText());
 
-		Singleton<TransactionManager>::Instance().DoAction(bs);
-		if(bs.GetErrorCode() == 0){
+		Singleton<TransactionManager>::Instance().DoAction(*bs);
+		if(bs->GetErrorCode() == 0){
 			std::vector<std::string> v;
 			v.push_back(" YES ");
 			JMessageBox::Show("-MESSAGE-","登录成功",v);
@@ -146,7 +149,7 @@ void LoginForm::Login(){
 		else{
 			std::vector<std::string> v;
 			v.push_back(" YES ");
-			JMessageBox::Show("-ERROR-",bs.GetErrorMsg(),v);
+			JMessageBox::Show("-ERROR-",bs->GetErrorMsg(),v);
 			ClearWindow();
 			Show();
 		}

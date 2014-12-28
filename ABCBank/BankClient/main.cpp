@@ -4,7 +4,7 @@
 #include "UI/LoginForm.h"
 #include "UI/MainMenuForm.h"
 #include "Client.h"
-
+#include "../Public/Exception.h"
 #include "UI/FormManager.h"
 
 using namespace JFC;
@@ -49,7 +49,16 @@ using namespace PUBLIC;
 //}
 
 int main(){
-	Singleton<Client>::Instance();
+	try
+	{
+		Singleton<Client>::Instance();
+	}
+	catch(Exception& e)
+	{
+		LOG_INFO << e.what();
+		system("pause");
+		return 1;
+	}
 	JApplication app;
 	//JButton btn(11,2,10,3,"test");
 	//btn.Show();

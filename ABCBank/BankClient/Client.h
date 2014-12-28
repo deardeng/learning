@@ -2,6 +2,7 @@
 #define _CLIENT_H_
 #include "../Public/Singleton.h"
 #include "../Public/SystemConfig.h"
+#include "BankSession.h"
 using namespace PUBLIC;
 
 class Client
@@ -14,6 +15,11 @@ public:
 	unsigned short GetPort()const{
 		return port_;
 	}
+
+	BankSession* GetBankSession()
+	{
+		return bs_;
+	}
 private:
 	Client();
 	Client(const Client& rhs);
@@ -22,6 +28,7 @@ private:
 	SystemConfig config_;
 	string serverIp_;
 	unsigned short port_;
+	BankSession* bs_;
 };
 
 #endif //_CLIENT_H_

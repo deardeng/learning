@@ -10,9 +10,12 @@ Client::Client():config_("client.conf")
 	stringstream ss;
 	ss << port;
 	ss >> port_;
+
+	bs_ = new BankSession;
 }
 
 Client::~Client()
 {
+	delete bs_;
 	Socket::Cleanup();
 }
