@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5CA90132-8568-4F83-8D6B-657257432B34}</ProjectGuid>
+    <ProjectGuid>{823F1C84-0722-4322-B81B-C512F2616852}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Algorithm</RootNamespace>
+    <RootNamespace>MathAndDigital</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,7 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="07.cpp" />
+    <ClCompile Include="17.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
