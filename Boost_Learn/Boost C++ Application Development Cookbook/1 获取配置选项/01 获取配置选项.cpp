@@ -1,3 +1,8 @@
+//BOOST_ALL_DYN_LINK;
+//PATH = %PATH%; D:\boost_dir\libs64;
+//此处的PATH必须要有，否则编译链接ok后，执行的时候找不到dll，要把D:\boost_dir\libs64中的dll拷贝到当前目录下，才可以执行。
+
+
 #include<boost/program_options.hpp>
 //'reading_file' 异常类在errors.hpp中声明
 #include<boost/program_options/errors.hpp>

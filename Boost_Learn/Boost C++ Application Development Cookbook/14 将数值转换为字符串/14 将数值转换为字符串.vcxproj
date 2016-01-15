@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D95F675C-EAC9-41E9-8F66-F1FB97AAEAC6}</ProjectGuid>
-    <RootNamespace>My2在容器or变量中存储任意值</RootNamespace>
+    <ProjectGuid>{ED1CB6CF-B31F-4907-82EF-66F4B30A46A0}</ProjectGuid>
+    <RootNamespace>My14将数值转换为字符串</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -81,7 +81,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);D:\boost_dir\include\boost-1_60;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\boost_dir\include\boost-1_60;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_UNICODE;UNICODE;%(PreprocessorDefinitions);BOOST_ALL_DYN_LINK;</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -115,7 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2 在容器or变量中存储任意值.cpp" />
+    <ClCompile Include="14 将数值转换为字符串.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

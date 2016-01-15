@@ -13,6 +13,7 @@ int main()
 	s += " That is great!\n";
 	std::cout << s;
 
+	//any有一个空的状态，且可以使用empty()成员函数检查
 
 	boost::any variable(std::string("Hello world"));
 	//#1:如果变量的实际值不是一个std::string,以下方法可能会抛出一个boost::bad_any_cast异常
