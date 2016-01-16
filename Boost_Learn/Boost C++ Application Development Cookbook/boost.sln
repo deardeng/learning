@@ -49,6 +49,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "22 管理作用域内的数
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "23 跨方法使用的数组指针的引用计数", "23 跨方法使用的数组指针的引用计数\23 跨方法使用的数组指针的引用计数.vcxproj", "{17C2853E-C8D5-4F3F-99A1-2CFBF14B21DF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "24 在变量中存储任意函数化对象", "24 在变量中存储任意函数化对象\24 在变量中存储任意函数化对象.vcxproj", "{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -240,6 +242,14 @@ Global
 		{17C2853E-C8D5-4F3F-99A1-2CFBF14B21DF}.Release|x64.Build.0 = Release|x64
 		{17C2853E-C8D5-4F3F-99A1-2CFBF14B21DF}.Release|x86.ActiveCfg = Release|Win32
 		{17C2853E-C8D5-4F3F-99A1-2CFBF14B21DF}.Release|x86.Build.0 = Release|Win32
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Debug|x64.ActiveCfg = Debug|x64
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Debug|x64.Build.0 = Debug|x64
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Debug|x86.ActiveCfg = Debug|Win32
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Debug|x86.Build.0 = Debug|Win32
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Release|x64.ActiveCfg = Release|x64
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Release|x64.Build.0 = Release|x64
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Release|x86.ActiveCfg = Release|Win32
+		{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

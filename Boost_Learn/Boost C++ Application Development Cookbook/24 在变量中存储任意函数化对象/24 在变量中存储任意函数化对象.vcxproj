@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{17C2853E-C8D5-4F3F-99A1-2CFBF14B21DF}</ProjectGuid>
-    <RootNamespace>My23跨方法使用的数组指针的引用计数</RootNamespace>
+    <ProjectGuid>{FDED67A2-A1EE-4C19-B573-6E4E082A5D2F}</ProjectGuid>
+    <RootNamespace>My24在变量中存储任意函数化对象</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,7 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="23 跨方法使用的数组指针的引用计数.cpp" />
+    <ClCompile Include="24 在变量中存储任意函数化对象.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
